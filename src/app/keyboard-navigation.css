@@ -1,0 +1,176 @@
+/**
+ * Keyboard Navigation Styles
+ * 
+ * Provides visible focus indicators and keyboard navigation support
+ * Validates Requirements 14.2: Keyboard Navigation Support
+ */
+
+/* Focus visible styles - only show focus ring for keyboard users */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #ffc700;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #ffc700;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 199, 0, 0.2);
+}
+
+/* Skip link styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #ffc700;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: var(--z-dropdown);
+  border-radius: 0 0 4px 0;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus trap container */
+.focus-trap {
+  position: relative;
+}
+
+/* Keyboard-only visible elements */
+.keyboard-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.keyboard-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Navigation focus styles */
+nav a:focus-visible {
+  background-color: rgba(255, 199, 0, 0.1);
+}
+
+/* Button focus styles */
+button:focus-visible {
+  transform: scale(1.02);
+  transition: transform 0.2s;
+}
+
+/* Input focus styles */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border-color: #ffc700;
+  box-shadow: 0 0 0 3px rgba(255, 199, 0, 0.2);
+}
+
+/* Card/interactive element focus */
+[role="button"]:focus-visible,
+[role="link"]:focus-visible {
+  outline: 2px solid #ffc700;
+  outline-offset: 4px;
+}
+
+/* Menu item focus */
+[role="menuitem"]:focus-visible {
+  background-color: rgba(255, 199, 0, 0.2);
+  outline: none;
+}
+
+/* Tab focus */
+[role="tab"]:focus-visible {
+  outline: 2px solid #ffc700;
+  outline-offset: -2px;
+}
+
+/* Dialog focus */
+[role="dialog"]:focus-visible {
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible {
+    transition: none;
+  }
+  
+  button:focus-visible {
+    transform: none;
+  }
+}
+
+/* Focus within - highlight parent when child is focused */
+.focus-within-highlight:focus-within {
+  box-shadow: 0 0 0 2px rgba(255, 199, 0, 0.3);
+}
+
+/* Keyboard shortcut hints */
+.keyboard-hint {
+  display: inline-block;
+  padding: 2px 6px;
+  background: rgba(255, 199, 0, 0.1);
+  border: 1px solid rgba(255, 199, 0, 0.3);
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  margin-left: 8px;
+  color: #ffc700;
+}
+
+/* Focus indicator for custom components */
+.custom-focus-indicator {
+  position: relative;
+}
+
+.custom-focus-indicator::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  pointer-events: none;
+  transition: border-color 0.2s;
+}
+
+.custom-focus-indicator:focus-visible::after {
+  border-color: #ffc700;
+}

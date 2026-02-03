@@ -1,0 +1,2478 @@
+/* @import должен быть в начале файла, иначе браузер игнорирует его */
+@import "../styles/theme.css";
+@import "../styles/adaptive.css";
+@import "../styles/hero.css";
+@import "../styles/about.css";
+@import "../styles/flip-gallery.css";
+@import "../styles/interactive-price-gallery.css";
+@import "../styles/contact.css";
+@import "../styles/cursor.css";
+@import "../styles/footer.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Furore";
+  src: url("/fonts/Furore.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Slavic";
+  src: url("/fonts/Slavic-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Define CSS variables */
+:root {
+  /* Original Palette for Reference (Not directly used by Shadcn theme) */
+  --primary-color-val: #2d1b3b;
+  /* Dark purple */
+  --accent-color-val: #ffc700;
+  /* Yellow */
+  --text-color-val: #ffffff;
+  /* White Text */
+
+  /* Calculate HSL values for ShadCN theme */
+  --background: 274 72% 19%;
+  /* HSL for #2D1B3B */
+  --foreground: 0 0% 100%;
+  /* HSL for #FFFFFF (White Text) */
+  --card: 262 36% 22%;
+  /* Slightly lighter dark purple for cards */
+  --card-foreground: 0 0% 100%;
+  /* White Text for cards */
+  --popover: 262 36% 22%;
+  --popover-foreground: 0 0% 100%;
+  /* White Text for popovers */
+  --primary: 48 100% 50%;
+  /* HSL for #ffc700 (Yellow Accent) */
+  --primary-foreground: 262 36% 17%;
+  /* HSL for #2D1B3B (Dark Purple for contrast on accent) */
+  --secondary: 262 36% 25%;
+  /* Darker shade purple for secondary elements */
+  --secondary-foreground: 0 0% 100%;
+  /* White text for secondary */
+  --muted: 262 36% 30%;
+  /* Darker shade purple for muted elements */
+  --muted-foreground: 0 0% 55%;
+  /* HSL for #8C8C8C (Более тёмный серый для muted текста) */
+  --accent: 48 100% 50%;
+  /* Accent color (yellow) */
+  --accent-foreground: 262 36% 17%;
+  /* Dark Purple for contrast on accent */
+  --destructive: 0 84.2% 60.2%;
+  /* Default destructive */
+  --destructive-foreground: 0 0% 98%;
+  --border: 48 100% 50%;
+  /* Accent color for borders */
+  --input: 262 36% 25%;
+  /* Darker shade purple for input background */
+  --ring: 48 100% 50%;
+  /* Accent ring */
+  --radius: 0.5rem;
+
+  /* Chart colors can remain default or be adjusted */
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+
+  /* Sidebar (Dark) - Adjusted for new theme */
+  --sidebar-background: 262 30% 10%;
+  /* Darker Purple */
+  --sidebar-foreground: 0 0% 100%;
+  /* Sidebar text color (White) */
+  --sidebar-primary: 48 100% 50%;
+  /* Accent as primary in sidebar */
+  --sidebar-primary-foreground: 262 36% 17%;
+  /* Dark purple */
+  --sidebar-accent: 48 100% 50%;
+  /* Accent */
+  --sidebar-accent-foreground: 262 36% 17%;
+  /* Dark Purple */
+  --sidebar-border: 48 100% 50%;
+  /* Accent border */
+  --sidebar-ring: 48 100% 50%;
+  /* Accent ring */
+
+  /* Custom variables from old styles */
+  --container-width: 1600px;
+  --main-font: "Furore", sans-serif;
+  --primary-color-val-transparent: rgba(45, 27, 59, 0.95);
+}
+
+/* Apply dark mode styles by default */
+html,
+body,
+#__next,
+.ClientLayoutWrapper {
+  min-height: 100%;
+  height: auto;
+  position: relative;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Prevent layout shift when vertical scrollbar appears/disappears */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Prevent flash of content before loading screen */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: hsl(var(--background));
+  z-index: var(--z-loading);
+  pointer-events: none;
+}
+
+body.loading-complete::before {
+  display: none;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Modern browsers */
+  }
+
+  html {
+    @apply overflow-x-hidden m-0 p-0;
+    scroll-behavior: smooth;
+  }
+
+  /* Consolidated loading-city-button styles */
+  .loading-city-button {
+    pointer-events: auto !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 200px !important;
+    width: 200px !important;
+    min-height: 48px !important;
+    height: auto !important;
+    padding: 12px 24px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    z-index: var(--z-loading) !important;
+  }
+
+  .loading-city-button *,
+  .loading-city-button::before {
+    pointer-events: none !important;
+    position: relative;
+  }
+
+  .loading-city-button * {
+    z-index: 2;
+  }
+
+  /* Создаем невидимый кликабельный слой на всю область кнопки */
+  .loading-city-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto !important;
+    z-index: 1;
+  }
+
+  body {
+    @apply bg-background text-foreground font-furore leading-normal overflow-x-hidden min-h-screen m-0 flex flex-col;
+    font-family: var(--main-font);
+    background-color: hsl(var(--background));
+    background-image: url("/images/textures/4-4.jpg"),
+      url("/images/textures/4-3.jpg"), url("/images/textures/4-3-flip.jpg");
+    /* Ensure consistent sizing so all layers stitch during bounce */
+    background-size: 90% auto, 20% auto, 20% auto;
+    background-repeat: repeat-y, repeat-y, repeat-y;
+    background-position: center top, left top, right top;
+    background-attachment: scroll, scroll, scroll;
+    color: hsl(var(--foreground));
+    /* Removed fixed height to allow natural document length and iOS bounce */
+    scrollbar-gutter: stable;
+    -webkit-overflow-scrolling: touch; /* Enable smooth iOS spring/bounce */
+  }
+
+  /* Mobile: hide 4-3-flip texture and adjust 4-4 texture */
+  @media (max-width: 768px) {
+    body {
+      background-image: url("/images/textures/4-4.jpg"),
+        url("/images/textures/4-3.jpg");
+      background-size: 250% auto, 100% auto;
+      background-position: left 15px top, left top;
+    }
+  }
+
+  .container {
+    max-width: var(--container-width);
+    @apply mx-auto px-5;
+    /* Corresponds to padding: 0 20px */
+  }
+
+  /* Use accent color for headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-accent font-furore;
+    /* Apply Furore font */
+  }
+
+  /* Specific title classes - .section-title handles section headings */
+  .card__header,
+    /* Kept for card-specific titles if different from section-title */
+    .card__title,
+    /* Kept for card-specific titles if different from section-title */
+    .modal__title {
+    @apply text-accent font-furore;
+  }
+
+  /* Text styles */
+  p,
+  span,
+  li,
+  button,
+  label {
+    @apply text-foreground;
+    /* Default text color */
+  }
+
+  a {
+    @apply text-foreground hover:text-accent;
+    /* Default link color, hover to accent */
+  }
+
+  /* Muted text */
+  .card__description,
+  .modal__text {
+    color: hsl(var(--muted-foreground));
+    opacity: 0.8;
+  }
+
+  .text-muted {
+    /* General muted text that isn't a ShadCN component part */
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Input placeholder specifically */
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-accent font-furore transition-opacity duration-300 ease-in-out opacity-100;
+  }
+
+  /* Ensure focus style for placeholder applies correctly */
+  input:focus::placeholder,
+  textarea:focus::placeholder {
+    @apply opacity-0;
+  }
+
+  /* Button text */
+  .btn,
+  button.btn,
+  .modal__button {
+    @apply text-primary-foreground font-furore;
+    cursor: pointer;
+  }
+
+  .btn--primary {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+
+  .nav__link,
+  .nav__list a {
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  /* Ensure inputs/textareas are selectable - handled by component */
+  input,
+  textarea {
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* Remove Tailwind Preflight focus outline and use theme ring */
+  *:focus-visible {
+    outline: none;
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Navigation Styles */
+  .nav {
+    @apply flex-1 flex justify-center items-center;
+    /* Added items-center */
+  }
+
+  .nav__list {
+    display: flex !important;
+    flex-direction: row !important;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: var(--nav-gap, 30px);
+  }
+
+  .nav-list-adaptive {
+    gap: var(--nav-gap);
+  }
+
+  /* Navigation Link Styles */
+  .nav__link,
+  .nav__list a {
+    @apply text-foreground no-underline font-medium relative text-center whitespace-nowrap font-furore;
+    padding: var(--nav-link-padding-y, 0.75rem)
+      var(--nav-link-padding-x, 1.25rem);
+    font-size: var(--nav-link-font-size, 1.5rem);
+    min-width: 120px;
+    text-align: center;
+    position: relative;
+  }
+
+  .nav-link-adaptive {
+    font-size: var(--nav-link-font-size);
+    padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
+    line-height: 1.3;
+  }
+
+  /* Phone Display Adaptive Sizing */
+  .phone-display-adaptive {
+    font-size: var(--phone-font-size);
+    line-height: 1.2;
+  }
+
+  .phone-icon-adaptive {
+    width: var(--phone-icon-size);
+    height: var(--phone-icon-size);
+  }
+
+  .nav__link::after,
+  .nav__list a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 0;
+    height: 3px;
+    background: hsl(var(--accent));
+    border-radius: 2px;
+    transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1),
+      left 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    pointer-events: none;
+  }
+
+  .nav__link:not(.active-border):hover::after,
+  .nav__link:not(.active-border):focus::after,
+  .nav__list a:not(.active-border):hover::after,
+  .nav__list a:not(.active-border):focus::after {
+    width: 60%;
+    left: 20%;
+  }
+
+  /* Hide ::after underline when SVG border is active */
+  .nav__link.active.active-border:hover::after,
+  .nav__link.active.active-border:focus::after,
+  .nav__list a.active.active-border:hover::after,
+  .nav__list a.active.active-border:focus::after {
+    width: 0 !important;
+    opacity: 0 !important;
+    transition: none !important;
+  }
+
+  .nav__link.active.active-border,
+  .nav__list a.active.active-border {
+    color: var(--accent-color-val) !important;
+  }
+
+  .nav__link.active,
+  .nav__list a.active {
+    color: var(--accent-color-val) !important;
+    position: relative;
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  .nav__link.active::after,
+  .nav__list a.active::after {
+    background: none !important;
+  }
+
+  /* Border drawn via pseudo-element so size does not change */
+  .nav__link.active.active-border::before,
+  .nav__list a.active.active-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 3px solid var(--accent-color-val);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+
+  /* SVG border animation: линия "ползёт" из центра снизу в обе стороны */
+  .svg-border {
+    --svg-perimeter: 304; /* 2*(116+36) - Ensure this matches your SVG path lengths if changed */
+  }
+
+  .svg-border__rect {
+    display: none;
+  }
+
+  .svg-border__path {
+    stroke: hsl(var(--accent));
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: butt; /* плоские концы – нет видимых "точек" до анимации */
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .svg-border__path--left,
+  .svg-border__path--right {
+    stroke-dasharray: 1 1; /* full dash + full gap in normalized units */
+    stroke-dashoffset: 1; /* hide entire path */
+    transition: stroke-dashoffset 0.9s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+
+  .svg-border--active .svg-border__path--left,
+  .svg-border--active .svg-border__path--right {
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.9s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+
+  .nav__link:hover,
+  .nav__list a:hover {
+    @apply text-accent;
+  }
+
+  .nav__link.active.active-border,
+  .nav__list a.active.active-border {
+    @apply text-accent;
+    color: var(--accent-color-val) !important;
+  }
+
+  /* Button Styles */
+  .btn {
+    @apply inline-block py-3 px-6 bg-accent text-primary-foreground border-none rounded-lg text-lg font-medium transition-all duration-300 relative overflow-hidden font-furore;
+  }
+
+  .btn--primary {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+
+  .btn--primary:hover {
+    @apply scale-110;
+    box-shadow: none !important;
+  }
+
+  .header__btn-hidden {
+    @apply opacity-0 pointer-events-none -translate-y-10;
+  }
+
+  .header .btn:hover {
+    /* Specific hover for header button */
+    transform: scale(1.1) !important;
+    box-shadow: none !important;
+    /* Override general hover shadow */
+    transition: transform 0.2s ease;
+  }
+
+  /* Hero Section */
+  .hero {
+    @apply text-center relative;
+  }
+
+  .video-hero__background {
+    @apply absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover z-[1] bg-[hsl(var(--background))] opacity-0;
+    transform: translate(-50.55%, -50%) scale(1.1);
+    animation: videoAppear 1.5s ease-out forwards;
+  }
+
+  .video-hero__overlay {
+    @apply absolute top-0 left-0 w-full h-full z-[2];
+  }
+
+  .video-hero__blackout {
+    @apply absolute top-0 left-0 w-full h-full bg-black/60 z-[2];
+  }
+
+  .video-hero__content {
+    @apply relative z-[3] text-foreground px-5 opacity-0;
+    transform: scale(0.8);
+    animation: contentZoomIn 1s ease-out forwards 0.5s;
+  }
+
+  /* Hero Scroll Link */
+  .video-hero__scroll {
+    @apply absolute bottom-10 left-1/2 -translate-x-1/2 z-[4] text-foreground flex flex-col items-center no-underline opacity-0 animate-scrollAppear animation-delay-[1.1s];
+  }
+
+  .video-hero__scroll span {
+    @apply mb-2 text-sm;
+  }
+
+  .video-hero__scroll svg {
+    @apply w-6 h-6 animate-bounce;
+  }
+
+  /* Contact Section */
+  .contact {
+    @apply py-[100px] pt-[120px] relative overflow-hidden;
+  }
+
+  .contact__content {
+    @apply text-center relative z-[2] opacity-0;
+    animation: contact-content-appear 1s ease-out forwards 0.5s;
+  }
+
+  .contact__content > form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact__form {
+    @apply max-w-[800px] mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 relative;
+  }
+
+  /* Styling for inputs within .contact__form, placeholder handled by Input component via className */
+  .contact__form input {
+    @apply w-full p-4 border-2 border-accent/10 rounded-lg bg-accent/5 text-accent font-furore text-lg transition-all duration-300 ease-in-out;
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: slideFromLeft 0.8s ease forwards;
+  }
+
+  .contact__form input[type="tel"] {
+    transform: translateX(100%);
+    animation: slideFromRight 0.8s ease forwards;
+  }
+
+  .contact__form input:focus {
+    @apply outline-none border-accent bg-accent/10;
+  }
+
+  .contact__form .btn--primary {
+    @apply md:col-span-2 justify-self-center min-w-[200px] p-4 bg-accent text-primary-foreground;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: slideFromBottom 0.8s ease forwards 0.4s;
+  }
+
+  .contact__form .btn--primary:hover {
+    /* Specific hover for form button */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px hsl(var(--accent) / 0.3);
+  }
+
+  .contact__form-yellow-border {
+    border: 3px solid #ffc700;
+    border-radius: 0;
+    padding: 32px 24px;
+    background: #2d1b3b;
+    box-shadow: 0 4px 24px 0 rgba(255, 199, 0, 0.1);
+    margin-bottom: 32px;
+    transition: box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact__form-yellow-border::before {
+    /* Удалено затемнение для читаемости */
+  }
+  .contact__form-yellow-border > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact__form-yellow-border--texture,
+  .contact__form-yellow-border--left,
+  .contact__form-yellow-border--right {
+    background: none !important;
+    background-image: none !important;
+    background-size: initial !important;
+    background-repeat: no-repeat !important;
+    background-position: initial !important;
+  }
+
+  /* Section Title */
+  .section-title {
+    @apply text-center text-accent mb-12 md:mb-16 relative w-full block font-furore;
+    font-size: var(--font-section-title);
+  }
+
+  /* Footer Styles */
+  .footer {
+    @apply bg-gradient-to-b from-[hsl(var(--background))] to-[var(--primary-color-val-transparent)] relative overflow-hidden;
+  }
+
+  .footer__content {
+    @apply container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[50px] mb-[50px] px-5 mx-auto;
+    /* Changed to 3 cols for wider layout */
+  }
+
+  .footer__info {
+    @apply max-w-[300px];
+  }
+
+  .footer__text {
+    @apply mt-5 opacity-80 leading-normal text-foreground;
+  }
+
+  .footer__contacts h3 {
+    @apply text-accent mb-5 text-xl font-furore;
+  }
+
+  .footer__contacts p {
+    @apply mb-2.5 opacity-80 text-foreground;
+  }
+
+  .footer__contacts p a {
+    @apply text-inherit hover:text-accent;
+    color: inherit !important;
+  }
+
+  .footer__contacts p a:hover {
+  }
+
+  .footer__social {
+    @apply flex gap-4 mt-5;
+  }
+
+  .social__link {
+    @apply text-foreground transition-colors duration-300 ease-in-out hover:text-accent hover:-translate-y-1;
+  }
+
+  .social__link:hover {
+  }
+
+  .footer__bottom {
+    @apply relative py-[30px] bg-black/10 border-t-2 border-accent;
+    min-height: 200px;
+    height: 200px;
+  }
+
+  @media (max-width: 767px) {
+    .footer__bottom {
+      height: auto;
+      min-height: auto;
+    }
+  }
+
+  .footer__bottom-content {
+    @apply container flex justify-between items-center flex-wrap gap-5 mx-auto px-5;
+    /* Added mx-auto px-5 */
+  }
+
+  .footer__bottom p {
+    @apply opacity-80 text-sm text-foreground;
+  }
+
+  .footer__links {
+    @apply flex gap-[30px];
+  }
+
+  .footer__link {
+    @apply text-foreground no-underline opacity-80 transition-all duration-300 ease-in-out text-sm hover:opacity-100 font-furore;
+    opacity: 0.8;
+  }
+
+  .footer__link:hover {
+    opacity: 1;
+  }
+
+  /* Enhanced Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    /* Disable all animations and transitions */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    /* Specifically disable hero animations */
+    .video-hero__background {
+      animation: none !important;
+      transform: translate(-50%, -50%) scale(1) !important;
+      opacity: 1 !important;
+    }
+
+    .video-hero__content {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    .video-hero__scroll {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    /* Disable contact form animations */
+    .contact__content {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    .contact__form input,
+    .contact__form input[type="tel"] {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    .contact__form .btn--primary {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    /* Disable header animations */
+    .header {
+      opacity: 1 !important;
+      animation: none !important;
+    }
+
+    /* Disable SVG border animations */
+    .svg-border__path--left,
+    .svg-border__path--right {
+      transition: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+
+    /* Disable button hover effects */
+    .btn:hover,
+    .header .btn:hover,
+    .contact__form .btn--primary:hover {
+      transform: none !important;
+      transition: none !important;
+    }
+
+    /* Disable social link animations */
+    .social__link {
+      transform: none !important;
+      transition: none !important;
+    }
+
+    /* Disable mobile animations */
+    .mobile-header,
+    .mobile-logo,
+    .mobile-phone,
+    .mobile-menu {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+  .footer__content {
+    @apply grid-cols-1 sm:grid-cols-2;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__bottom-content {
+    @apply flex-col text-center;
+  }
+
+  .footer__links {
+    @apply flex-col items-center gap-4;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer__content {
+    @apply grid-cols-1;
+  }
+}
+
+/* Furniture Icons Section */
+.furniture-icons {
+  @apply py-[60px] relative overflow-hidden;
+  background: hsl(var(--background));
+  /* Use theme variable */
+}
+
+.furniture-icons__content {
+  @apply container flex justify-center items-center gap-16 mb-10 mx-auto px-5;
+  /* Added mx-auto px-5 */
+}
+
+.furniture-icon {
+  @apply text-foreground transition-transform duration-300 ease-in-out hover:scale-110;
+}
+
+.wave-line {
+  @apply absolute bottom-0 left-0 w-full;
+}
+
+@media (max-width: 768px) {
+  .furniture-icons__content {
+    @apply gap-8;
+  }
+}
+
+@media (max-width: 480px) {
+  .furniture-icons__content {
+    @apply gap-5;
+  }
+}
+
+/* Mobile Menu & Cart */
+.cart-icon {
+  @apply block md:hidden w-6 h-6 text-accent ml-4;
+  /* Show on mobile */
+}
+
+.mobile-menu-toggle {
+  @apply flex md:hidden flex-col justify-between w-[30px] h-5 bg-transparent border-none p-0 z-[10001];
+  /* Show on mobile */
+}
+
+/* Responsive display based on Header component logic */
+@media (max-width: 768px) {
+  /* Example breakpoint for mobile */
+  .nav {
+    @apply hidden;
+  }
+
+  .header__btn-hidden {
+    @apply hidden;
+  }
+
+  /* Hide desktop button */
+  .phone-shake {
+    @apply hidden;
+  }
+
+  /* Hide desktop phone */
+  .mobile-menu-toggle {
+    @apply flex;
+  }
+
+  /* Show mobile toggle */
+  .cart-icon {
+    @apply block;
+  }
+
+  /* Show mobile cart icon */
+}
+
+.mobile-menu-toggle span {
+  @apply w-full h-[2px] bg-accent transition-all duration-300 ease-in-out;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-[hsl(var(--background)_/_0.95)] flex justify-center items-center z-[10000] opacity-0 invisible transition-all duration-300 ease-in-out;
+  backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+  @apply opacity-100 visible;
+}
+
+.modal {
+  @apply bg-gradient-to-br from-white/10 to-white/5 border border-accent rounded-[15px] p-10 max-w-[500px] w-[90%] relative shadow-lg transition-all duration-300 ease-in-out;
+  transform: translateY(30px);
+  opacity: 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0);
+  @apply opacity-100;
+}
+
+.modal__close {
+  @apply absolute top-5 right-5 w-[30px] h-[30px] border-none bg-none text-accent transition-transform duration-300 ease-in-out;
+}
+
+.modal__close:hover {
+  transform: rotate(90deg);
+}
+
+.modal__close svg {
+  @apply w-full h-full;
+}
+
+.modal__icon {
+  @apply w-20 h-20 mx-auto mb-5 flex items-center justify-center bg-accent/10 rounded-full text-accent;
+}
+
+/* .modal__title styling is handled by general h1-h6 or specific modal CSS if needed */
+/* .modal__text styling is handled by general p or specific modal CSS if needed */
+.modal__button {
+  @apply block w-full p-4 bg-accent text-primary-foreground border-none rounded-lg text-base font-medium transition-all duration-300 ease-in-out font-furore;
+}
+
+.modal__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px hsl(var(--accent) / 0.3);
+}
+
+/* Phone Shake Animation */
+.phone-shake {
+  @apply inline-flex items-center pointer-events-auto p-1 rounded-full relative;
+  /* Ensure 'a' tag is interactive, added padding and rounded for better hit area, added relative */
+  animation: syncShake 4s linear infinite !important; /* Synchronized with city icon */
+}
+
+.phone-shake svg {
+  @apply block m-2 text-accent pointer-events-none;
+  /* SVG should not intercept mouse events */
+  transform: scaleX(-1);
+}
+
+.phone-shake-hitbox {
+  /* New hitbox class */
+  @apply absolute -inset-3;
+  /* Adjust inset to expand clickable area, e.g. -inset-2 for 0.5rem expansion */
+}
+
+/* Privacy/Terms Modal Styles */
+#privacyPolicyModal,
+#termsModal {
+  @apply fixed inset-0 bg-[hsl(var(--background))] z-[10000] overflow-y-auto hidden;
+  will-change: opacity, transform;
+}
+
+#privacyPolicyModal.active,
+#termsModal.active {
+  @apply block;
+  animation: privacyModalSlideUp 0.5s ease-out forwards;
+}
+
+#privacyPolicyModal.closing,
+#termsModal.closing {
+  animation: privacyModalSlideDown 0.5s ease-in forwards;
+}
+
+#privacyPolicyModalHeader,
+#termsModalHeader {
+  @apply sticky top-0 z-[20002] w-full bg-[hsl(var(--background)_/_0.98)] backdrop-blur-md shadow-lg flex items-center justify-center h-[72px] min-h-[56px];
+}
+
+#privacyPolicyArrow,
+#termsArrow {
+  @apply bg-none border-none outline-none pointer-events-auto inline-flex items-center justify-center mt-0;
+  animation: arrowBlink 1.1s infinite alternate;
+}
+
+#privacyPolicyArrow svg,
+#termsArrow svg {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+#privacyPolicyArrow:active svg,
+#termsArrow:active svg {
+  filter: brightness(1.2);
+}
+
+@media (max-width: 600px) {
+  #privacyPolicyModalHeader,
+  #termsModalHeader {
+    @apply h-14 min-h-11;
+  }
+
+  #privacyPolicyArrow svg,
+  #termsArrow svg {
+    @apply w-8 h-8;
+  }
+}
+
+/* Animation Classes (can be used with Framer Motion or Tailwind variants) */
+.fade-in {
+  @apply opacity-0 translate-y-6 transition-all duration-500 ease-in-out;
+}
+
+/* Desktop: более выраженные fade анимации */
+@media (min-width: 1024px) {
+  .fade-in {
+    @apply translate-y-12 duration-700;
+  }
+}
+
+.fade-in.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+.slide-in-left {
+  @apply opacity-0 -translate-x-12 -rotate-1 transition-all duration-500 ease-in-out;
+}
+
+/* Desktop: более выраженные slide анимации */
+@media (min-width: 1024px) {
+  .slide-in-left {
+    @apply -translate-x-24 -rotate-3 duration-700;
+  }
+}
+
+.slide-in-left.visible {
+  @apply opacity-100 translate-x-0 rotate-0;
+}
+
+.slide-in-right {
+  @apply opacity-0 translate-x-12 rotate-1 transition-all duration-500 ease-in-out;
+}
+
+/* Desktop: более выраженные slide анимации */
+@media (min-width: 1024px) {
+  .slide-in-right {
+    @apply translate-x-24 rotate-3 duration-700;
+  }
+}
+
+.slide-in-right.visible {
+  @apply opacity-100 translate-x-0 rotate-0;
+}
+
+.scale-in {
+  @apply opacity-0 scale-90 translate-y-4 transition-all duration-500 ease-in-out;
+}
+
+/* Desktop: более выраженные анимации */
+@media (min-width: 1024px) {
+  .scale-in {
+    @apply scale-75 translate-y-8 duration-700;
+  }
+}
+
+.scale-in.visible {
+  @apply opacity-100 scale-100 translate-y-0;
+}
+
+.delay-1 {
+  transition-delay: 0.2s;
+}
+
+.delay-2 {
+  transition-delay: 0.4s;
+}
+
+.delay-3 {
+  transition-delay: 0.6s;
+}
+
+.delay-4 {
+  transition-delay: 0.8s;
+}
+
+.delay-5 {
+  transition-delay: 1s;
+}
+
+/* Confirmation Modal styles */
+#confirmationModal {
+  /* Uses .modal-overlay styles */
+}
+
+#confirmationModal .modal {
+  /* Uses .modal styles */
+}
+
+#confirmationModal .modal__icon svg {
+  @apply w-12 h-12;
+  /* Adjust icon size */
+}
+
+/* Policy/Terms container styles */
+#privacyPolicyModal .modal-content-container,
+#termsModal .modal-content-container {
+  @apply container mx-auto p-6 md:p-10 prose prose-invert max-w-3xl;
+  /* Use Tailwind prose for styling */
+}
+
+#privacyPolicyModal h2,
+#termsModal h2,
+#privacyPolicyModal h3,
+#termsModal h3 {
+  @apply text-accent mt-8 mb-4 font-furore;
+  /* Style headings */
+}
+
+#privacyPolicyModal p,
+#termsModal p,
+#privacyPolicyModal ul,
+#termsModal ul,
+#privacyPolicyModal li,
+#termsModal li {
+  @apply text-foreground mb-4;
+}
+
+#privacyPolicyModal a,
+#termsModal a {
+  @apply text-accent hover:underline;
+}
+
+#privacyPolicyModal strong,
+#termsModal strong {
+  @apply text-white;
+  /* Ensure strong text is visible */
+}
+
+/* === Nav Letters Animation === */
+.nav__letter {
+  display: inline-block;
+  will-change: transform, opacity;
+  pointer-events: none;
+  /* Начальное состояние задается inline через style */
+}
+
+.nav__letter--in {
+  pointer-events: auto;
+}
+
+/* Для nav__word ничего не нужно, только inline-block */
+
+@media (min-width: 768px) {
+  .nav__letter {
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+}
+
+/* === Process Section Slider & Doors === */
+.process-slider {
+  width: 100%;
+  margin: 0 auto;
+  background: none;
+  border-radius: 1rem;
+  box-shadow: none;
+}
+
+.process-doors {
+  min-height: 240px;
+  position: relative;
+}
+
+.process-door {
+  background-color: hsl(var(--secondary));
+  background-image: url("/images/textures/door.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  will-change: transform;
+}
+
+.process-door--left {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  background-position: left center;
+  background-size: 200% 100%;
+}
+
+.process-door--right {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-position: right center;
+  background-size: 200% 100%;
+}
+
+@media (max-width: 768px) {
+  .process-doors {
+    min-height: 120px;
+  }
+
+  .process-door {
+    border-radius: 0.5rem !important;
+  }
+}
+
+.process-toggle {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  @apply text-foreground;
+}
+
+.process-toggle:hover {
+  @apply text-accent;
+}
+
+.process-toggle__icon svg {
+  @apply text-accent;
+}
+
+/* Bounce animation for "Заказать" button, similar to header */
+.animate-button-header-like-bounce-in {
+  animation: button-header-like-bounce 0.8s cubic-bezier(0.6, 0.05, 0.4, 1)
+    forwards;
+  pointer-events: auto !important;
+}
+
+header .nav__link.active .nav__word,
+header .nav__link.active.active-border .nav__word {
+  color: var(--accent-color-val) !important;
+  background: none !important;
+}
+
+.footer .btn--primary:hover {
+  transform: scale(1.1) !important;
+  box-shadow: none !important;
+}
+
+.contacts-form-columns {
+  max-width: none !important;
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
+@media (max-width: 900px) {
+  .contacts-form-columns .contact__form-yellow-border {
+    width: 100%;
+    height: auto;
+    min-height: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .contacts-form-columns,
+  .contacts-form-columns > div {
+    overflow: visible !important;
+  }
+}
+
+.mat-overlay {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 90vw;
+  height: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  background-image: url("/images/textures/4-4.jpg");
+  background-repeat: repeat-y;
+  background-size: auto;
+  background-position: center top;
+  opacity: 1;
+  pointer-events: none;
+}
+
+@layer utilities {
+  /* Add any custom utility classes if needed */
+  .animation-delay-\[1\.1s\] {
+    animation-delay: 1.1s;
+  }
+
+  /* Ensure Tailwind JIT can generate this class */
+  .bg-gradient-to-b.from-\[hsl\(var\(--background\)\].to-\[var\(--primary-color-val-transparent\)\] {
+    background-image: linear-gradient(
+      to bottom,
+      hsl(var(--background)),
+      var(--primary-color-val-transparent)
+    );
+  }
+}
+
+/* Keyframes remain the same as provided in the CSS */
+@keyframes hero-content-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes contact-content-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes form-elements-appear {
+  0% {
+    opacity: 0;
+    /* Transform is handled inline or via animation classes */
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes wave-animation {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes videoAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50.55%, -50%) scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50.55%, -50%) scale(1);
+  }
+}
+
+@keyframes contentZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes titleAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes subtitleAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounce-header {
+  /* Single, more pronounced rebound */
+  0% {
+    transform: translateY(-140px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-20px); /* Higher quick rebound */
+  }
+  70% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframe for button bounce, similar to header but adapted */
+@keyframes button-header-like-bounce {
+  0% {
+    transform: translateY(-70px); /* Initial "fall" distance for button */
+    opacity: 0;
+  }
+  60% {
+    /* Impact and slight dip */
+    transform: translateY(5px);
+    opacity: 1;
+  }
+  80% {
+    /* Bounce up */
+    transform: translateY(-10px); /* Smaller bounce than header */
+  }
+  100% {
+    /* Settle */
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes privacyModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%) scaleY(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes privacyModalSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(100%) scaleY(0.7);
+  }
+}
+
+@keyframes arrowBlink {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  80% {
+    opacity: 0.3;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 0.1;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes slideFromLeft {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromRight {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromBottom {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes loading-bar-stripes {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 100vw;
+  }
+}
+
+.svg-border {
+  --svg-perimeter: 304;
+  /* 2*(116+36) */
+}
+
+.svg-border__rect {
+  display: none;
+}
+
+.svg-border__path {
+  stroke: hsl(var(--accent));
+  stroke-width: 3; /* толщина 2px */
+  fill: none;
+  stroke-linecap: butt; /* возвращаем закругленные края */
+  stroke-linejoin: round; /* скругляем углы соединения */
+  vector-effect: non-scaling-stroke;
+}
+
+.svg-border__path--left,
+.svg-border__path--right {
+  /* Dash pattern: full-length dash followed by full-length gap */
+  stroke-dasharray: var(--path-length, 100) var(--path-length, 100);
+  stroke-dashoffset: var(--path-length, 100);
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.svg-border--active .svg-border__path {
+  stroke-dashoffset: 0;
+  /* Используем ту же длительность, что и при закрытии, чтобы анимации шли синхронно */
+  transition: stroke-dashoffset 1.1s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* --- Ensure SVG border draws from center outward --- */
+.svg-border--active .svg-border__path--left,
+.svg-border--active .svg-border__path--right {
+  stroke-dashoffset: 0 !important; /* override earlier rule with higher specificity */
+  transition: stroke-dashoffset 2.7s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.video-hero__border {
+  width: 100%;
+  height: 4px;
+  background: hsl(var(--accent));
+  position: relative;
+  z-index: 2;
+  margin-top: -4px; /* чтобы линия была прямо под видео */
+  box-shadow: 0 2px 8px 0 hsl(var(--accent) / 0.15);
+}
+
+@keyframes arrow-move-right {
+  0% {
+    transform: translate(-50%, -50%) rotate(-135deg);
+  }
+  40% {
+    transform: translate(calc(-50% + 10px), -50%) rotate(-135deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-135deg);
+  }
+}
+
+@keyframes arrow-move-left {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  40% {
+    transform: translate(calc(-50% - 10px), -50%) rotate(45deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+.carousel-arrow-next::before {
+  animation: arrow-move-right 0.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.carousel-arrow-prev::before {
+  animation: arrow-move-left 0.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.carousel-arrow-next:hover::before,
+.carousel-arrow-prev:hover::before {
+  border-color: #ffe066; /* или используйте нужный вам цвет для подсветки */
+}
+
+@media (max-width: 600px) {
+  .contact__content > form input,
+  .contact__content > form .btn--primary {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Bottom marker at the very bottom: reveals body background during bounce for perfect stitching */
+.bottom-marker {
+  width: 100%;
+  height: 50px; /* visible height */
+  position: relative; /* at real bottom of the page */
+  overflow: hidden; /* hides extra space until bounce */
+  pointer-events: none; /* not interactive */
+  border-top: 2px solid #ffc700; /* yellow line */
+  background: transparent; /* let body background show through */
+}
+
+/* Reveal its own texture while height increases, but do not move it with scroll */
+.bottom-marker::before {
+  content: "";
+  position: absolute;
+  top: 0; /* restore original so texture shows at bottom */
+  left: 0;
+  width: 100%;
+  height: 250px; /* enough to cover the maximum bounce height */
+  background-image: url("/images/textures/3-2.jpg");
+  background-size: cover;
+  background-repeat: repeat-x;
+}
+
+@keyframes bottomBounce {
+  0% {
+    height: 50px;
+  }
+  55% {
+    height: 150px;
+  }
+  100% {
+    height: 50px;
+  }
+}
+
+@keyframes pageBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  80% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.page-bounce {
+  animation: pageBounce 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes scrollBounce {
+  0% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-22px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.scroll-bounce {
+  animation: bottomBounce 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: height;
+}
+
+/* Hide scrollbar visually */
+body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+}
+
+.font-slavic {
+  font-family: "Slavic", sans-serif !important;
+  letter-spacing: 0.04em;
+  font-weight: 900 !important;
+}
+
+/* Mobile Header Animations */
+@keyframes mobileLogoSlideIn {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes mobilePhoneBounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes mobileMenuSlideIn {
+  0% {
+    transform: translateX(100px) rotate(180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-10px) rotate(90deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes mobilePulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes mobileGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 199, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 199, 0, 0.6), 0 0 30px rgba(255, 199, 0, 0.4);
+  }
+}
+
+/* Mobile Header Specific Styles */
+.mobile-header-logo {
+  animation: mobileLogoSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.mobile-header-phone {
+  animation: mobilePhoneBounce 2s infinite;
+}
+
+.mobile-header-menu {
+  animation: mobileMenuSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.mobile-pulse-ring {
+  animation: mobilePulseRing 2s infinite;
+}
+
+.mobile-glow-effect {
+  animation: mobileGlow 3s ease-in-out infinite;
+}
+
+/* Mobile Menu Item Stagger Animation */
+.mobile-menu-item {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: mobileMenuItemSlide 0.4s ease-out forwards;
+}
+
+@keyframes mobileMenuItemSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile Header Bounce Effect */
+.mobile-header-bounce {
+  animation: mobileHeaderBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes mobileHeaderBounce {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(10px);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateY(-5px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile Phone Ring Animation */
+.mobile-phone-ring {
+  position: relative;
+}
+
+.mobile-phone-ring::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 199, 0, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: mobilePulseRing 2s infinite;
+}
+
+/* Mobile Hamburger Animation Enhancement */
+.mobile-hamburger-line {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.mobile-hamburger-active .mobile-hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-hamburger-active .mobile-hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.mobile-hamburger-active .mobile-hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu Backdrop Blur Animation */
+.mobile-menu-backdrop {
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.5s ease-out;
+}
+
+.mobile-menu-backdrop.active {
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile Header Scroll Effect */
+.mobile-header-scrolled {
+  background: rgba(45, 27, 59, 0.98);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Logo Pulse Effect */
+.mobile-logo-pulse {
+  animation: mobileLogoPulse 3s ease-in-out infinite;
+}
+
+@keyframes mobileLogoPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile Text Slide Animation */
+.mobile-text-slide {
+  animation: mobileTextSlide 0.6s ease-out;
+}
+
+@keyframes mobileTextSlide {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Принудительное отображение мобильной шапки на маленьких экранах */
+@media (max-width: 767px) {
+  /* Скрываем десктопную шапку */
+  .header:not(.mobile-header) {
+    display: none !important;
+  }
+
+  /* Показываем мобильную шапку */
+  .mobile-header {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Скрываем мобильную шапку на больших экранах */
+  .mobile-header {
+    display: none !important;
+  }
+}
+
+/* Дополнительные стили для мобильной шапки */
+.mobile-header {
+  background: rgba(45, 27, 59, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  height: var(--mobile-header-height, 70px);
+}
+
+.mobile-header-adaptive {
+  height: var(--mobile-header-height);
+}
+
+.mobile-header.scrolled {
+  background: rgba(45, 27, 59, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Улучшенная анимация для мобильного меню */
+.mobile-menu-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.mobile-menu-content {
+  background: rgba(45, 27, 59, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* Анимация появления мобильных элементов */
+@keyframes mobileElementFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-element-animated {
+  animation: mobileElementFadeIn 0.5s ease-out;
+}
+
+/* Fullscreen Mobile Menu Styles */
+.mobile-menu-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(45, 27, 59, 0.98) 0%,
+    rgba(45, 27, 59, 0.95) 100%
+  );
+}
+
+.mobile-menu-content {
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 199, 0, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 199, 0, 0.05) 0%,
+      transparent 50%
+    );
+}
+
+/* Enhanced mobile menu animations */
+@keyframes mobileMenuSlideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes mobileMenuItemFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.mobile-menu-item-float {
+  animation: mobileMenuItemFloat 3s ease-in-out infinite;
+}
+
+/* Improved hamburger animation */
+.mobile-hamburger-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-hamburger-enhanced::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 199, 0, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.mobile-hamburger-enhanced:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+/* Mobile logo enhanced pulse */
+@keyframes mobileLogoPulseEnhanced {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(255, 199, 0, 0.3));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(255, 199, 0, 0.6));
+  }
+}
+
+.mobile-logo-pulse-enhanced {
+  animation: mobileLogoPulseEnhanced 2s ease-in-out infinite;
+}
+
+/* Fullscreen menu backdrop effect */
+.mobile-menu-backdrop-effect {
+  background: radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 199, 0, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255, 199, 0, 0.05) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(45, 27, 59, 0.98) 0%,
+      rgba(45, 27, 59, 0.95) 100%
+    );
+}
+
+/* Mobile Header with Texture 3-2 */
+.mobile-header-textured {
+  background: linear-gradient(rgba(45, 27, 59, 0.85), rgba(45, 27, 59, 0.85)),
+    url("/images/textures/1-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.mobile-header-textured.scrolled {
+  background: linear-gradient(rgba(45, 27, 59, 0.92), rgba(45, 27, 59, 0.92)),
+    url("/images/textures/1-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Mobile phone icon - static yellow */
+.mobile-phone-icon {
+  position: relative;
+}
+
+/* Mobile header texture overlay effect */
+.mobile-header-textured::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 199, 0, 0.05) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-header-textured:hover::after {
+  opacity: 1;
+}
+
+/* Mobile logo enhanced with texture background */
+.mobile-logo-enhanced {
+  position: relative;
+  z-index: 2;
+}
+
+.mobile-logo-adaptive {
+  width: var(--mobile-logo-size);
+  height: var(--mobile-logo-size);
+}
+
+.mobile-hamburger-adaptive {
+  width: var(--mobile-hamburger-size);
+  height: var(--mobile-hamburger-size);
+}
+
+.mobile-nav-link-adaptive {
+  font-size: var(--mobile-nav-font-size);
+  line-height: 1.3;
+}
+
+.mobile-logo-enhanced::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 199, 0, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-logo-enhanced:hover::before {
+  opacity: 1;
+}
+
+/* Mobile Menu with Texture */
+.mobile-menu-textured {
+  background: linear-gradient(rgba(45, 27, 59, 0.95), rgba(45, 27, 59, 0.98)),
+    url("/images/textures/3-2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Enhanced mobile menu overlay effect */
+.mobile-menu-textured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 199, 0, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255, 199, 0, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mobile-menu-textured > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile header compact design */
+.mobile-header-compact {
+  height: 60px !important;
+}
+
+.mobile-header-compact .container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 360px) {
+  .mobile-header-textured {
+    height: 60px;
+  }
+
+  .mobile-logo-enhanced img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .mobile-phone-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+.mobile-video-container {
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  transform-style: preserve-3d;
+}
+
+.mobile-video-container:hover {
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4));
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Анимация для мобильных элементов */
+@keyframes mobileFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.mobile-hero .animate-float {
+  animation: mobileFloat 3s ease-in-out infinite;
+}
+
+/* Мобильная анимация человека */
+.mobile-frame-animation-container {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* Скрытие header в полноэкранном режиме просмотра фото */
+body.photo-fullscreen-active .header,
+body.photo-fullscreen-active .mobile-header,
+body.photo-fullscreen-active header {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+/*
+Курсор для иконок с ценой */
+
+/* Анимация пульсации для значка города */
+/* Синхронизированные анимации для трубки и иконки города */
+@keyframes syncShake {
+  0% {
+    transform: rotate(0deg);
+  }
+  1% {
+    transform: rotate(-15deg);
+  }
+  2% {
+    transform: rotate(15deg);
+  }
+  3% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  5% {
+    transform: rotate(-15deg);
+  }
+  6% {
+    transform: rotate(15deg);
+  }
+  7% {
+    transform: rotate(-15deg);
+  }
+  8% {
+    transform: rotate(15deg);
+  }
+  9% {
+    transform: rotate(0deg);
+  }
+  10%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes syncPulse {
+  0% {
+    transform: scale(1);
+  }
+  1% {
+    transform: scale(1.3);
+  }
+  2% {
+    transform: scale(1);
+  }
+  3% {
+    transform: scale(1.3);
+  }
+  4% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(1.3);
+  }
+  6% {
+    transform: scale(1);
+  }
+  9% {
+    transform: scale(1);
+  }
+  10%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Общий контейнер для синхронизации - принудительное применение */
+.sync-animations-container .phone-shake,
+.sync-animations-container .city-icon-pulse,
+.phone-shake,
+.city-icon-pulse {
+  animation-duration: 4s !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+  animation-fill-mode: both !important;
+  animation-delay: 0s !important;
+  transform-origin: center center !important;
+  display: inline-block !important;
+}
+
+.phone-shake {
+  animation-name: syncShake !important;
+}
+
+.city-icon-pulse {
+  animation-name: syncPulse !important;
+}
+
+.mobile-video-hero-container {
+  top: 8% !important;
+  left: 4.5% !important;
+  width: 90% !important;
+  height: 90% !important;
+}
+/*
+ Pricing Section - Prevent Title Overlapping */
+#pricing-gallery h3 {
+  isolation: isolate;
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* Ensure proper spacing between room titles */
+#pricing-gallery .flex.flex-col.items-center {
+  position: relative;
+  z-index: 5;
+}
+
+/* Mobile adjustments for pricing section */
+@media (max-width: 768px) {
+  #pricing-gallery h3 {
+    font-size: 2.5rem !important;
+    min-height: 30px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 20px !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #pricing-gallery .grid {
+    gap: 3rem 0 !important;
+  }
+}
+
+/* Tablet adjustments for pricing section */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #pricing-gallery h3 {
+    font-size: 3rem !important;
+    min-height: 90px !important;
+    padding-bottom: 25px !important;
+  }
+}
+
+:root {
+  --hero-max-width: 3440px;
+}

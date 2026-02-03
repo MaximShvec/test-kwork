@@ -1,0 +1,303 @@
+
+
+
+:root {
+    
+    --primary-color-val: #2D1B3B;
+    
+    --accent-color-val: #ffc700;
+    
+    --text-color-val: #FFFFFF;
+    
+
+    
+    --background: 274 72% 19%;
+    
+    --foreground: 0 0% 100%;
+    
+    --card: 262 36% 22%;
+    
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 262 36% 22%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 48 100% 50%;
+    
+    --primary-foreground: 262 36% 17%;
+    
+    --secondary: 262 36% 25%;
+    
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 262 36% 30%;
+    
+    --muted-foreground: 0 0% 55%;
+    
+    --accent: 48 100% 50%;
+    
+    --accent-foreground: 262 36% 17%;
+    
+    --destructive: 0 84.2% 60.2%;
+    
+    --destructive-foreground: 0 0% 98%;
+    --border: 48 100% 50%;
+    
+    --input: 262 36% 25%;
+    
+    --ring: 48 100% 50%;
+    
+    --radius: 0.5rem;
+
+    
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    
+    --sidebar-background: 262 30% 10%;
+    
+    --sidebar-foreground: 0 0% 100%;
+    
+    --sidebar-primary: 48 100% 50%;
+    
+    --sidebar-primary-foreground: 262 36% 17%;
+    
+    --sidebar-accent: 48 100% 50%;
+    
+    --sidebar-accent-foreground: 262 36% 17%;
+    
+    --sidebar-border: 48 100% 50%;
+    
+    --sidebar-ring: 48 100% 50%;
+    
+
+    
+    --container-width: 1600px;
+    --main-font: 'Furore', sans-serif;
+    --primary-color-val-transparent: rgba(45, 27, 59, 0.95);
+
+    
+    --z-base: 1;           
+    --z-content: 10;       
+    --z-ipad: 20;          
+    --z-header: 50;        
+    --z-dropdown: 100;     
+    --z-sticky: 200;       
+    --z-modal-backdrop: 500;  
+    --z-modal: 600;        
+    --z-modal-header: 650; 
+    --z-popover: 700;      
+    --z-tooltip: 800;      
+    --z-loading: 900;      
+
+    
+    
+    
+    --bp-desktop-sm: 1366px;  
+    --bp-desktop-md: 1920px;  
+    --bp-desktop-lg: 2560px;  
+    --bp-desktop-xl: 3840px;  
+
+    
+    
+    --font-hero-primary: clamp(2.5rem, 4vw, 4rem);      
+    --font-hero-secondary: clamp(2rem, 3vw, 3.5rem);    
+    
+    
+    --font-section-title: clamp(1.875rem, 2.5vw, 3rem); 
+    --font-section-subtitle: clamp(1.25rem, 2vw, 2rem); 
+    
+    
+    --font-card-title: clamp(1.125rem, 1.5vw, 1.5rem);  
+    --font-card-price: clamp(1.5rem, 2vw, 2.25rem);     
+    
+    
+    --font-ui-large: clamp(1rem, 1.25vw, 1.25rem);      
+    --font-ui-medium: clamp(0.875rem, 1vw, 1.125rem);   
+    --font-ui-small: clamp(0.75rem, 0.75vw, 1rem);      
+
+    
+    
+    --spacing-section-y: clamp(3rem, 6vw, 8rem);        
+    --spacing-section-y-small: clamp(2rem, 4vw, 5rem);  
+    
+    
+    --spacing-container-x: clamp(1rem, 3vw, 4rem);      
+    
+    
+    --spacing-element-gap: clamp(1rem, 2vw, 2.5rem);    
+    --spacing-element-gap-small: clamp(0.5rem, 1vw, 1.5rem); 
+    
+    
+    --component-height-hero: clamp(60vh, 70vh, 80vh);
+    --component-height-section: clamp(40vh, 50vh, 60vh);
+    
+    
+    --button-height: clamp(2.75rem, 3vw, 3.5rem);        
+    --button-height-sm: clamp(2.5rem, 2.5vw, 3rem);      
+    --button-height-lg: clamp(3.5rem, 4vw, 4.5rem);      
+    --button-padding-x: clamp(1.5rem, 2vw, 2.5rem);      
+    --button-padding-x-sm: clamp(1rem, 1.5vw, 1.5rem);   
+    --button-padding-x-lg: clamp(2rem, 2.5vw, 3rem);     
+    --button-font-size: var(--font-ui-large);            
+    --button-font-size-sm: var(--font-ui-medium);        
+    --button-font-size-lg: clamp(1.125rem, 1.5vw, 1.375rem); 
+    
+    
+    --input-height: clamp(2.75rem, 3vw, 3.5rem);         
+    --input-height-sm: clamp(2.5rem, 2.5vw, 3rem);       
+    --input-height-lg: clamp(3.5rem, 4vw, 4.5rem);       
+    --input-padding-x: clamp(1rem, 1.5vw, 1.5rem);       
+    --input-padding-y: clamp(0.75rem, 1vw, 1rem);        
+    --input-font-size: var(--font-ui-large);             
+    --input-border-radius: clamp(0.375rem, 0.5vw, 0.5rem); 
+    
+    
+    
+    --header-height: 150px;
+    --header-min-height: 150px;
+    
+    
+    --logo-size: 150px;
+    --logo-subtitle-size: 1.1rem;
+    
+    
+    --nav-link-font-size: clamp(1.25rem, 1.5vw, 1.5rem); 
+    --nav-link-padding-x: clamp(1rem, 1.25vw, 1.25rem);  
+    --nav-link-padding-y: clamp(0.75rem, 1vw, 0.75rem);  
+    --nav-gap: clamp(20px, 2vw, 30px);                    
+    
+    
+    --mobile-header-height: clamp(60px, 5vw, 70px);       
+    --mobile-logo-size: clamp(40px, 3.5vw, 45px);         
+    --mobile-hamburger-size: clamp(36px, 3vw, 40px);      
+    --mobile-nav-font-size: clamp(1.5rem, 2vw, 2rem);     
+    
+    
+    --phone-font-size: clamp(1.25rem, 1.5vw, 1.5rem);    
+    --phone-icon-size: clamp(36px, 2.5vw, 42px);          
+    
+    
+    --working-hours-size: 1.55rem;
+    
+    
+    --touch-target-min: 2.75rem;                         
+    
+    
+    --card-padding: clamp(1rem, 2vw, 2rem);             
+    --card-border-radius: clamp(0.5rem, 1vw, 1rem);     
+}
+
+
+
+
+@media (max-width: 1024px) {
+  :root {
+    
+    --font-hero-primary: clamp(1.75rem, 3vw, 2.5rem);   
+    --font-hero-secondary: clamp(1.5rem, 2.25vw, 2rem); 
+    --font-section-title: clamp(1.5rem, 2vw, 2.25rem);  
+    --spacing-section-y: clamp(1.5rem, 3vw, 3rem);      
+    
+    
+    --header-height: 100px;
+    --header-min-height: 100px;
+    --logo-size: 90px;
+    --logo-subtitle-size: 0.85rem;
+    
+    
+    --nav-link-font-size: clamp(0.875rem, 1vw, 1rem);   
+    --nav-link-padding-x: clamp(0.5rem, 0.75vw, 0.75rem); 
+    --nav-link-padding-y: clamp(0.5rem, 0.75vw, 0.5rem);  
+    --nav-gap: clamp(8px, 1vw, 12px);                   
+    
+    
+    --phone-font-size: clamp(0.875rem, 1vw, 1rem);      
+    --phone-icon-size: clamp(28px, 2vw, 32px);          
+    --working-hours-size: 1rem;                          
+  }
+}
+
+@media (max-width: 1366px) and (min-width: 1025px) {
+  :root {
+    
+    --font-hero-primary: clamp(2rem, 3.5vw, 3rem);      
+    --font-hero-secondary: clamp(1.75rem, 2.5vw, 2.5rem); 
+    --spacing-section-y: clamp(2rem, 4vw, 5rem);        
+    
+    
+    --header-height: 150px;
+    --logo-size: 135px;
+    --nav-link-font-size: clamp(1.125rem, 1.25vw, 1.25rem); 
+    --nav-gap: clamp(15px, 1.5vw, 20px);                
+    --phone-font-size: clamp(1.125rem, 1.25vw, 1.25rem); 
+  }
+}
+
+
+@media (min-width: 1367px) and (max-width: 1920px) {
+  :root {
+    
+    --font-hero-primary: clamp(2.5rem, 4vw, 4rem);      
+    --font-hero-secondary: clamp(2rem, 3vw, 3.5rem);    
+    --font-section-title: clamp(5rem, 6vw, 8rem);       
+    --spacing-section-y: clamp(3rem, 5vw, 6rem);        
+    
+    
+    --header-height: 150px;
+    --header-min-height: 150px;
+    --logo-size: 150px;
+    --logo-subtitle-size: 1.1rem;
+    
+    
+    --nav-link-font-size: clamp(1.25rem, 1.5vw, 1.5rem); 
+    --nav-link-padding-x: clamp(1rem, 1.25vw, 1.25rem);  
+    --nav-gap: clamp(20px, 2vw, 30px);                   
+    --phone-font-size: clamp(1.25rem, 1.5vw, 1.5rem);    
+    --phone-icon-size: clamp(36px, 2.5vw, 42px);         
+    --working-hours-size: 1.25rem;                        
+  }
+}
+
+
+@media (min-width: 1921px) {
+  :root {
+    --font-section-title: 110px;                         
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    
+    --font-hero-primary: clamp(3.5rem, 4.5vw, 5rem);    
+    --font-hero-secondary: clamp(3rem, 3.5vw, 4rem);    
+    --font-section-title: 150px;                         
+    --spacing-section-y: clamp(5rem, 8vw, 12rem);       
+    
+    
+    --header-height: 150px;
+    --logo-size: 155px;
+    --nav-link-font-size: clamp(1.5rem, 1.75vw, 1.75rem); 
+    --nav-gap: clamp(30px, 2.5vw, 40px);                
+    --phone-font-size: clamp(1.5rem, 1.75vw, 1.75rem);  
+  }
+}
+
+@media (min-width: 3840px) {
+  :root {
+    
+    --font-hero-primary: clamp(4rem, 5vw, 6rem);        
+    --font-hero-secondary: clamp(3.5rem, 4vw, 5rem);    
+    --font-section-title: clamp(5rem, 6vw, 8rem);       
+    
+    
+    --header-height: 150px;
+    --logo-size: 160px;
+    --nav-link-font-size: clamp(1.5rem, 1.5vw, 1.5rem); 
+    --nav-gap: clamp(30px, 2vw, 30px);                  
+    --phone-font-size: clamp(1.5rem, 1.5vw, 1.5rem);   
+  }
+}

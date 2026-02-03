@@ -1,0 +1,1537 @@
+.pricing-gallery-section {
+  position: relative;
+  width: 100vw;
+  --pricing-scale: clamp(0.72, calc(100vw / 1400), 1);
+  --blueprint-height: 70%;
+  --pricing-icon-base: clamp(72px, 6.5vw, 220px);
+  --pricing-icon-aspect: 1.25;
+  --pricing-gap-xy: clamp(12px, 1.4vw, 28px);
+  --pricing-title-size: clamp(32px, 8vw, 128px);
+  --pricing-subtitle-size: clamp(12px, 1.6vw, 18px);
+  min-height: 100vh;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.pricing-scale-layer {
+  position: relative;
+  width: 100%;
+  transform: scale(var(--pricing-scale));
+  transform-origin: center top;
+  will-change: transform;
+  pointer-events: auto;
+}
+
+.pricing-blueprint-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--blueprint-height);
+  background-image: url("/images/textures/7-1.PNG");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left 50px top;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pricing-roll {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.pricing-roll__texture {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  height: var(--blueprint-height);
+  width: auto;
+  aspect-ratio: 2 / 8;
+  background-image: url("/images/textures/7-2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+  pointer-events: none;
+}
+
+.pricing-roll__shadow {
+  position: absolute;
+  top: calc(var(--blueprint-height) - 16px);
+  left: 160px;
+  width: 60px;
+  height: 40px;
+  border-radius: 999px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    transparent 100%
+  );
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.pricing-roll__edge {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  width: 96px;
+  height: var(--blueprint-height);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+  pointer-events: none;
+}
+
+.pricing-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  pointer-events: auto;
+  box-sizing: border-box;
+  padding-left: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
+}
+
+.pricing-heading {
+  text-align: center;
+  margin-bottom: calc(var(--pricing-gap-xy) * 2);
+  transform: translateY(-300px);
+}
+
+.pricing-main-title {
+  display: flex;
+  gap: 18px;
+  align-items: end;
+  justify-content: center;
+  font-family: "Furore", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-weight: 800;
+  font-size: var(--pricing-title-size);
+  line-height: 0.9;
+  color: #ffc700 !important;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.pricing-main-title .title-left,
+.pricing-main-title .title-right {
+  color: #ffc700 !important;
+}
+
+.pricing-main-title .title-center {
+  align-self: flex-end;
+}
+
+.pricing-subtitle {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--pricing-subtitle-size);
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 32px);
+  align-items: start;
+  justify-items: center;
+  pointer-events: auto;
+  width: 100%;
+  transform: translateY(-200px);
+}
+
+.pricing-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(20px, 4vw, 60px);
+  align-items: start;
+  justify-items: center;
+  pointer-events: auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  transform: translateY(-200px);
+  margin-top: clamp(20px, 3vw, 40px);
+}
+
+.pricing-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.pricing-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: clamp(8px, 1vw, 16px);
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.pricing-row-item {
+  display: inline-flex;
+}
+
+.pricing-room-title {
+  color: #ffc700;
+  font-family: "Slavic", "Furore", system-ui, sans-serif;
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-size: clamp(32px, 5.2vw, 56px);
+  text-transform: uppercase;
+}
+
+.pricing-column:nth-child(1) .pricing-room-title {
+  transform: translate(150px, -90px);
+}
+
+.pricing-column:nth-child(2) .pricing-room-title {
+  transform: translate(-195px, -90px);
+}
+
+.pricing-column:nth-child(3) .pricing-room-title {
+  transform: translate(-700px, -90px);
+}
+
+.pricing-column:nth-child(4) .pricing-room-title {
+  transform: translate(340px, -150px);
+}
+
+.pricing-column:nth-child(5) .pricing-room-title {
+  transform: translate(550px, -150px);
+}
+
+.pricing-icon {
+  --offset-x: 0px;
+  --offset-y: 0px;
+  --icon-scale: 1;
+  --margin-top: 0px;
+  --margin-bottom: 0px;
+  --margin-left: 0px;
+  --margin-right: 0px;
+
+  width: calc(var(--pricing-icon-base) * var(--icon-scale));
+  height: calc(
+    var(--pricing-icon-base) * var(--pricing-icon-aspect) * var(--icon-scale)
+  );
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform: translate(var(--offset-x), var(--offset-y))
+    scale(var(--icon-scale));
+  transform-origin: bottom center;
+  margin-top: var(--margin-top);
+  margin-bottom: var(--margin-bottom);
+  margin-left: var(--margin-left);
+  margin-right: var(--margin-right);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), filter 0.22s ease;
+  pointer-events: auto;
+  user-select: none;
+  z-index: 1;
+}
+
+.pricing-icon--large {
+  --icon-scale: 1.3;
+}
+.pricing-icon--small {
+  --icon-scale: 0.85;
+}
+.pricing-icon--xsmall {
+  --icon-scale: 0.7;
+}
+
+.pricing-icon--wiggle {
+  animation: none;
+}
+
+[data-item-id="shkaf-spalnya"] {
+  --offset-x: clamp(30px, 1.74vw, 60px);
+  --offset-y: clamp(-80px, -0.58vw, -90px);
+  --icon-scale: 1.15;
+}
+[data-item-id="tumbochka-spalnya"] {
+  --offset-x: clamp(25px, 1.45vw, 50px);
+  --offset-y: clamp(-77.5px, -0.44vw, -85px);
+  --icon-scale: 0.935;
+}
+[data-item-id="krovat"] {
+  --offset-x: clamp(80px, 4.65vw, 160px);
+  --offset-y: clamp(-55px, 0.87vw, -40px);
+  --icon-scale: 1.2;
+}
+
+[data-item-id="tumbochka-detskaya"] {
+  --offset-y: -115px;
+  --offset-x: -200px;
+  --icon-scale: 0.85;
+}
+[data-item-id="stol-detskaya"] {
+  --offset-y: -10px;
+  --offset-x: -180px;
+  --icon-scale: 1.2;
+  z-index: 200;
+}
+[data-item-id="polka"] {
+  --offset-y: -130px;
+  --offset-x: -160px;
+  --icon-scale: 0.95;
+  z-index: 50;
+}
+[data-item-id="penal"] {
+  --offset-y: -115px;
+  --offset-x: -170px;
+  --icon-scale: 1.05;
+}
+
+.stol-click-blocker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  z-index: 201;
+  pointer-events: auto;
+}
+
+[data-item-id="kreslo"] {
+  --offset-x: 630px;
+  --offset-y: -190px;
+  --icon-scale: 0.9;
+  --margin-bottom: 60px;
+}
+[data-item-id="shkaf-gostinaya"] {
+  --offset-x: 500px;
+  --offset-y: -160px;
+  --icon-scale: 1.35;
+  --margin-top: 70px;
+}
+[data-item-id="divan"] {
+  --offset-x: 550px;
+  --offset-y: -155px;
+  --icon-scale: 1.2;
+}
+[data-item-id="chasy"] {
+  --offset-x: 550px;
+  --offset-y: -170px;
+  --icon-scale: 0.595;
+  --margin-bottom: -32px;
+}
+[data-item-id="torsher-gostinaya"] {
+  --offset-x: 570px;
+  --offset-y: -220px;
+  --icon-scale: 0.935;
+  --margin-bottom: 60px;
+}
+[data-item-id="gostinaya-tumba"] {
+  --offset-x: 600px;
+  --offset-y: -155px;
+  --icon-scale: 1.4;
+}
+
+[data-item-id="kuhnya"] {
+  --offset-x: 330px;
+  --offset-y: -90px;
+  --icon-scale: 1.55;
+}
+[data-item-id="holodilnik"] {
+  --offset-x: 260px;
+  --offset-y: -280px;
+  --icon-scale: 1;
+}
+[data-item-id="stul-lev"] {
+  --offset-x: 400px;
+  --offset-y: -280px;
+  --icon-scale: 0.78;
+}
+[data-item-id="stol-kuhnya"] {
+  --offset-x: 370px;
+  --offset-y: -205px;
+  --icon-scale: 1.05;
+}
+[data-item-id="stul-prav"] {
+  --offset-x: 320px;
+  --offset-y: -280px;
+  --icon-scale: 0.78;
+}
+[data-item-id="kartina-kuhnya"] {
+  --offset-x: 370px;
+  --offset-y: -180px;
+  --icon-scale: 0.8;
+  --margin-bottom: -32px;
+}
+
+[data-item-id="komod"] {
+  --offset-x: -460px;
+  --offset-y: -40px;
+  --icon-scale: 1;
+}
+[data-item-id="tsvetok"] {
+  --offset-x: -520px;
+  --offset-y: -100px;
+  --icon-scale: 0.9;
+}
+[data-item-id="prihozhaya"] {
+  --offset-x: -530px;
+  --offset-y: -65px;
+  --icon-scale: 1.14;
+}
+[data-item-id="zerkalo"] {
+  --offset-x: -1135px;
+  --offset-y: -280px;
+  --icon-scale: 0.65;
+}
+[data-item-id="kartina-prihozhaya"] {
+  --offset-x: -700px;
+  --offset-y: -280px;
+  --icon-scale: 0.695;
+}
+
+[data-layout="clock-sofa-column"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+[data-layout="kitchen-table-column"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+[data-layout="kitchen-chairs-row"] {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: clamp(8px, 1vw, 16px);
+}
+[data-layout="shelf-container"] {
+  margin-bottom: calc(-250px * var(--pricing-scale));
+  margin-top: 0;
+  transform: translate(-30px, -60px);
+  position: relative;
+  z-index: 30;
+}
+
+[data-layout="shelf-container"] .clickable-icon {
+  cursor: pointer;
+}
+
+[data-layout="shelf-container"] .clickable-icon:hover {
+  z-index: 40;
+}
+
+.shelf-wrapper {
+  position: relative;
+  z-index: 50;
+  cursor: pointer;
+  padding: 20px 20px 0 20px;
+  margin: -20px -20px -15px -20px;
+}
+
+.shelf-wrapper[data-clickable="true"],
+.shelf-wrapper[data-interactive="true"] {
+  pointer-events: auto;
+}
+
+.shelf-motion-container {
+  transition: filter 0.3s ease;
+}
+
+.shelf-motion-container--hovered {
+  filter: brightness(1.15) drop-shadow(0 0 12px rgba(255, 199, 0, 0.6));
+}
+
+.shelf-icon-wrapper {
+  position: relative;
+  pointer-events: auto;
+}
+
+.shelf-car-img {
+  position: absolute;
+  width: 48px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  bottom: 260px;
+  left: 50%;
+  transform: translateX(-230px);
+  pointer-events: none;
+}
+
+.cat-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  transform: translateX(-890px) translateY(-100px);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cat-container[data-clickable="true"] {
+  pointer-events: auto;
+}
+
+.cat-animation {
+  width: 100%;
+  height: 100%;
+}
+
+.kitchen-annotation-wrapper {
+  position: relative;
+}
+
+.kitchen-annotation-text {
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  transform: translateX(-170px) translateY(-220px);
+  z-index: -1;
+}
+
+.kitchen-annotation-text span {
+  font-family: "Furore", system-ui, sans-serif;
+  color: #ffc700;
+  font-size: clamp(32px, 3.5vw, 60px);
+  white-space: nowrap;
+  text-transform: uppercase;
+  transform: rotate(-30deg);
+  transform-origin: center center;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.kitchen-annotation-arrow {
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  transform: translateX(150px) translateY(-230px) rotate(55deg);
+  z-index: -1;
+}
+
+.kitchen-annotation-arrow img {
+  width: clamp(64px, 8vw, 120px);
+  height: clamp(64px, 8vw, 120px);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+.pricing-icon__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  display: block;
+}
+
+.pricing-icon:hover,
+.pricing-icon:focus,
+.pricing-icon:focus-visible {
+  transform: translate(var(--offset-x), var(--offset-y))
+    scale(calc(var(--icon-scale) * 1.08));
+  filter: brightness(1.15) saturate(1.08);
+  z-index: 30;
+}
+
+.pricing-icon.is-active,
+.pricing-icon[data-active="true"],
+.pricing-icon--active,
+.pricing-icon--clicked {
+  transform: translate(var(--offset-x), var(--offset-y))
+    scale(var(--icon-scale)) !important;
+  filter: none !important;
+  z-index: 20;
+}
+
+.pricing-icon.is-active:hover,
+.pricing-icon.is-active:focus,
+.pricing-icon.is-active:focus-visible,
+.pricing-icon[data-active="true"]:hover,
+.pricing-icon[data-active="true"]:focus,
+.pricing-icon[data-active="true"]:focus-visible,
+.pricing-icon--active:hover,
+.pricing-icon--active:focus,
+.pricing-icon--active:focus-visible,
+.pricing-icon--clicked:hover,
+.pricing-icon--clicked:focus,
+.pricing-icon--clicked:focus-visible {
+  transform: translate(var(--offset-x), var(--offset-y))
+    scale(var(--icon-scale)) !important;
+  filter: none !important;
+  cursor: default;
+}
+
+.pricing-icon--no-hover,
+.pricing-icon--no-hover:hover,
+.pricing-icon--no-hover:focus,
+.pricing-icon--no-hover:focus-visible {
+  transform: translate(var(--offset-x), var(--offset-y))
+    scale(var(--icon-scale));
+  filter: none;
+  cursor: default;
+}
+
+.pricing-icon--inherit-cursor,
+.pricing-icon--inherit-cursor:hover,
+.pricing-icon--inherit-cursor:focus,
+.pricing-icon--inherit-cursor:focus-visible {
+  transform: translate(var(--offset-x), var(--offset-y))
+    scale(var(--icon-scale)) !important;
+  filter: none !important;
+}
+
+.pricing-badge {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+.pricing-badge__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(4px, 0.5vw, 8px);
+}
+
+.pricing-badge__title {
+  color: white;
+  font-family: "Furore", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(14px, 1.8vw, 20px);
+  letter-spacing: 0.025em;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  white-space: nowrap;
+}
+
+.pricing-badge__price {
+  color: #ffc700;
+  font-family: "Furore", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(16px, 2.2vw, 24px);
+  letter-spacing: 0.025em;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  white-space: nowrap;
+}
+
+@media (max-width: 1920px) {
+  .pricing-gallery-section {
+    --pricing-scale: 0.92;
+    --blueprint-height: 65%;
+  }
+
+  .pricing-blueprint-bg {
+    background-position: left 28px top;
+  }
+
+  .pricing-roll__texture {
+    left: 128px;
+  }
+
+  .pricing-roll__shadow {
+    left: 190px;
+  }
+
+  .pricing-roll__edge {
+    left: 212px;
+    width: 54px;
+  }
+
+  .pricing-heading {
+    transform: translateY(-320px);
+  }
+
+  .pricing-grid {
+    transform: translateY(-160px) translateX(-50px);
+  }
+
+  .pricing-column:nth-child(1) .pricing-room-title {
+    transform: translate(35px, -138px);
+  }
+  .pricing-column:nth-child(2) .pricing-room-title {
+    transform: translate(-150px, -138px);
+  }
+  .pricing-column:nth-child(3) .pricing-room-title {
+    transform: translate(-430px, -138px);
+  }
+  .pricing-column:nth-child(4) .pricing-room-title {
+    transform: translate(140px, -100px);
+  }
+  .pricing-column:nth-child(5) .pricing-room-title {
+    transform: translate(260px, -100px);
+  }
+
+  [data-item-id="shkaf-spalnya"] {
+    --offset-x: 17px;
+    --offset-y: -125px;
+  }
+  [data-item-id="tumbochka-spalnya"] {
+    --offset-x: 14px;
+    --offset-y: -123px;
+  }
+  [data-item-id="krovat"] {
+    --offset-x: 45px;
+    --offset-y: -100px;
+  }
+
+  [data-item-id="tumbochka-detskaya"] {
+    --offset-y: -140px;
+    --offset-x: -162px;
+  }
+  [data-item-id="stol-detskaya"] {
+    --offset-y: -81px;
+    --offset-x: -150px;
+  }
+  [data-item-id="polka"] {
+    --offset-y: -148px;
+    --offset-x: -140px;
+  }
+  [data-item-id="penal"] {
+    --offset-y: -140px;
+    --offset-x: -145px;
+  }
+
+  [data-item-id="kreslo"] {
+    --offset-x: 350px;
+    --offset-y: -106px;
+    --margin-bottom: 34px;
+  }
+  [data-item-id="shkaf-gostinaya"] {
+    --offset-x: 280px;
+    --offset-y: -90px;
+    --margin-top: 40px;
+  }
+  [data-item-id="divan"] {
+    --offset-x: 308px;
+    --offset-y: -87px;
+  }
+  [data-item-id="chasy"] {
+    --offset-x: 308px;
+    --offset-y: -95px;
+    --margin-bottom: -18px;
+  }
+  [data-item-id="torsher-gostinaya"] {
+    --offset-x: 320px;
+    --offset-y: -123px;
+    --margin-bottom: 34px;
+  }
+  [data-item-id="gostinaya-tumba"] {
+    --offset-x: 336px;
+    --offset-y: -87px;
+  }
+
+  [data-item-id="kuhnya"] {
+    --offset-x: 185px;
+    --offset-y: -50px;
+  }
+  [data-item-id="holodilnik"] {
+    --offset-x: 145px;
+    --offset-y: -157px;
+  }
+  [data-item-id="stul-lev"] {
+    --offset-x: 224px;
+    --offset-y: -157px;
+  }
+  [data-item-id="stol-kuhnya"] {
+    --offset-x: 207px;
+    --offset-y: -115px;
+  }
+  [data-item-id="stul-prav"] {
+    --offset-x: 179px;
+    --offset-y: -157px;
+  }
+  [data-item-id="kartina-kuhnya"] {
+    --offset-x: 207px;
+    --offset-y: -100px;
+    --margin-bottom: -18px;
+  }
+
+  [data-item-id="komod"] {
+    --offset-x: -308px;
+    --offset-y: -87px;
+  }
+  [data-item-id="tsvetok"] {
+    --offset-x: -341px;
+    --offset-y: -121px;
+  }
+  [data-item-id="prihozhaya"] {
+    --offset-x: -347px;
+    --offset-y: -101px;
+  }
+  [data-item-id="zerkalo"] {
+    --offset-x: -711px;
+    --offset-y: -222px;
+  }
+  [data-item-id="kartina-prihozhaya"] {
+    --offset-x: -442px;
+    --offset-y: -222px;
+  }
+
+  [data-layout="shelf-container"] {
+    margin-bottom: calc(-140px * var(--pricing-scale));
+    transform: translate(-17px, -34px);
+  }
+
+  .shelf-car-img {
+    bottom: 220px;
+    transform: translateX(-179px);
+  }
+
+  .cat-container {
+    transform: translateX(-538px) translateY(-101px);
+    width: 80px;
+    height: 80px;
+  }
+
+  .pricing-badge__title {
+    font-size: 14px;
+  }
+
+  .pricing-badge__price {
+    font-size: 16px;
+  }
+
+  .kitchen-annotation-text {
+    transform: translateX(-124px) translateY(-195px);
+  }
+
+  .kitchen-annotation-text span {
+    font-size: clamp(28px, 3vw, 56px);
+  }
+
+  .kitchen-annotation-arrow {
+    transform: translateX(164px) translateY(-166px) rotate(60deg);
+  }
+
+  .kitchen-annotation-arrow img {
+    width: clamp(45px, 6.4vw, 67px);
+    height: clamp(45px, 6.4vw, 67px);
+  }
+}
+
+@media (max-width: 1440px) {
+  .pricing-gallery-section {
+    --pricing-scale: 0.72;
+    --blueprint-height: 55%;
+  }
+
+  .pricing-blueprint-bg {
+    background-position: left 21px top;
+  }
+
+  .pricing-roll__texture {
+    left: 21px;
+  }
+
+  .pricing-roll__shadow {
+    left: 67px;
+  }
+
+  .pricing-roll__edge {
+    left: 84px;
+    width: 40px;
+  }
+
+  .pricing-heading {
+    transform: translateY(-160px);
+  }
+
+  .pricing-grid {
+    transform: translateY(-110px);
+  }
+
+  .pricing-column:nth-child(1) .pricing-room-title {
+    transform: translate(63px, -45px);
+  }
+  .pricing-column:nth-child(2) .pricing-room-title {
+    transform: translate(-82px, -45px);
+  }
+  .pricing-column:nth-child(3) .pricing-room-title {
+    transform: translate(-294px, -45px);
+  }
+  .pricing-column:nth-child(4) .pricing-room-title {
+    transform: translate(143px, -75px);
+  }
+  .pricing-column:nth-child(5) .pricing-room-title {
+    transform: translate(231px, -75px);
+  }
+
+  [data-item-id="shkaf-spalnya"] {
+    --offset-x: 13px;
+    --offset-y: -38px;
+  }
+  [data-item-id="tumbochka-spalnya"] {
+    --offset-x: 10px;
+    --offset-y: -36px;
+  }
+  [data-item-id="krovat"] {
+    --offset-x: 34px;
+    --offset-y: -19px;
+  }
+
+  [data-item-id="tumbochka-detskaya"] {
+    --offset-y: -48px;
+    --offset-x: -84px;
+  }
+  [data-item-id="stol-detskaya"] {
+    --offset-y: -4px;
+    --offset-x: -76px;
+  }
+  [data-item-id="polka"] {
+    --offset-y: -55px;
+    --offset-x: -67px;
+  }
+  [data-item-id="penal"] {
+    --offset-y: -48px;
+    --offset-x: -71px;
+  }
+
+  [data-item-id="kreslo"] {
+    --offset-x: 264px;
+    --offset-y: -80px;
+    --margin-bottom: 25px;
+  }
+  [data-item-id="shkaf-gostinaya"] {
+    --offset-x: 210px;
+    --offset-y: -67px;
+    --margin-top: 29px;
+  }
+  [data-item-id="divan"] {
+    --offset-x: 231px;
+    --offset-y: -65px;
+  }
+  [data-item-id="chasy"] {
+    --offset-x: 231px;
+    --offset-y: -71px;
+    --margin-bottom: -13px;
+  }
+  [data-item-id="torsher-gostinaya"] {
+    --offset-x: 239px;
+    --offset-y: -92px;
+    --margin-bottom: 25px;
+  }
+  [data-item-id="gostinaya-tumba"] {
+    --offset-x: 252px;
+    --offset-y: -65px;
+  }
+
+  [data-item-id="kuhnya"] {
+    --offset-x: 139px;
+    --offset-y: -38px;
+  }
+  [data-item-id="holodilnik"] {
+    --offset-x: 109px;
+    --offset-y: -118px;
+  }
+  [data-item-id="stul-lev"] {
+    --offset-x: 168px;
+    --offset-y: -118px;
+  }
+  [data-item-id="stol-kuhnya"] {
+    --offset-x: 155px;
+    --offset-y: -86px;
+  }
+  [data-item-id="stul-prav"] {
+    --offset-x: 134px;
+    --offset-y: -118px;
+  }
+  [data-item-id="kartina-kuhnya"] {
+    --offset-x: 155px;
+    --offset-y: -76px;
+    --margin-bottom: -13px;
+  }
+
+  [data-item-id="komod"] {
+    --offset-x: -193px;
+    --offset-y: -17px;
+  }
+  [data-item-id="tsvetok"] {
+    --offset-x: -218px;
+    --offset-y: -42px;
+  }
+  [data-item-id="prihozhaya"] {
+    --offset-x: -223px;
+    --offset-y: -27px;
+  }
+  [data-item-id="zerkalo"] {
+    --offset-x: -477px;
+    --offset-y: -118px;
+  }
+  [data-item-id="kartina-prihozhaya"] {
+    --offset-x: -294px;
+    --offset-y: -118px;
+  }
+
+  [data-layout="shelf-container"] {
+    margin-bottom: calc(-105px * var(--pricing-scale));
+    transform: translate(-13px, -25px);
+  }
+
+  .shelf-car-img {
+    bottom: 109px;
+    transform: translateX(-97px);
+  }
+
+  .cat-container {
+    transform: translateX(-374px) translateY(-42px);
+    width: 84px;
+    height: 84px;
+  }
+
+  .kitchen-annotation-text {
+    transform: translateX(168px) translateY(34px);
+  }
+
+  .kitchen-annotation-text span {
+    font-size: clamp(24px, 2.8vw, 42px);
+  }
+
+  .kitchen-annotation-arrow {
+    transform: translateX(273px) translateY(42px) rotate(10deg);
+  }
+
+  .kitchen-annotation-arrow img {
+    width: clamp(34px, 5.6vw, 50px);
+    height: clamp(34px, 5.6vw, 50px);
+  }
+}
+
+@media (max-width: 1280px) {
+  .pricing-gallery-section {
+    --pricing-scale: 0.62;
+    --blueprint-height: 52%;
+  }
+
+  .pricing-blueprint-bg {
+    background-position: left 18px top;
+  }
+
+  .pricing-roll__texture {
+    left: 18px;
+  }
+
+  .pricing-roll__shadow {
+    left: 59px;
+  }
+
+  .pricing-roll__edge {
+    left: 74px;
+    width: 35px;
+  }
+
+  .pricing-heading {
+    transform: translateY(-130px);
+  }
+
+  .pricing-grid {
+    transform: translateY(-90px);
+  }
+
+  .pricing-column:nth-child(1) .pricing-room-title {
+    transform: translate(56px, -38px);
+  }
+  .pricing-column:nth-child(2) .pricing-room-title {
+    transform: translate(-72px, -38px);
+  }
+  .pricing-column:nth-child(3) .pricing-room-title {
+    transform: translate(-259px, -38px);
+  }
+  .pricing-column:nth-child(4) .pricing-room-title {
+    transform: translate(126px, -65px);
+  }
+  .pricing-column:nth-child(5) .pricing-room-title {
+    transform: translate(204px, -65px);
+  }
+
+  [data-item-id="shkaf-spalnya"] {
+    --offset-x: 11px;
+    --offset-y: -33px;
+  }
+  [data-item-id="tumbochka-spalnya"] {
+    --offset-x: 9px;
+    --offset-y: -32px;
+  }
+  [data-item-id="krovat"] {
+    --offset-x: 30px;
+    --offset-y: -16px;
+  }
+
+  [data-item-id="tumbochka-detskaya"] {
+    --offset-y: -43px;
+    --offset-x: -74px;
+  }
+  [data-item-id="stol-detskaya"] {
+    --offset-y: -4px;
+    --offset-x: -67px;
+  }
+  [data-item-id="polka"] {
+    --offset-y: -48px;
+    --offset-x: -59px;
+  }
+  [data-item-id="penal"] {
+    --offset-y: -43px;
+    --offset-x: -63px;
+  }
+
+  [data-item-id="kreslo"] {
+    --offset-x: 233px;
+    --offset-y: -70px;
+    --margin-bottom: 22px;
+  }
+  [data-item-id="shkaf-gostinaya"] {
+    --offset-x: 185px;
+    --offset-y: -59px;
+    --margin-top: 26px;
+  }
+  [data-item-id="divan"] {
+    --offset-x: 204px;
+    --offset-y: -57px;
+  }
+  [data-item-id="chasy"] {
+    --offset-x: 204px;
+    --offset-y: -63px;
+    --margin-bottom: -12px;
+  }
+  [data-item-id="torsher-gostinaya"] {
+    --offset-x: 211px;
+    --offset-y: -81px;
+    --margin-bottom: 22px;
+  }
+  [data-item-id="gostinaya-tumba"] {
+    --offset-x: 222px;
+    --offset-y: -57px;
+  }
+
+  [data-item-id="kuhnya"] {
+    --offset-x: 122px;
+    --offset-y: -33px;
+  }
+  [data-item-id="holodilnik"] {
+    --offset-x: 96px;
+    --offset-y: -104px;
+  }
+  [data-item-id="stul-lev"] {
+    --offset-x: 148px;
+    --offset-y: -104px;
+  }
+  [data-item-id="stol-kuhnya"] {
+    --offset-x: 137px;
+    --offset-y: -76px;
+  }
+  [data-item-id="stul-prav"] {
+    --offset-x: 118px;
+    --offset-y: -104px;
+  }
+  [data-item-id="kartina-kuhnya"] {
+    --offset-x: 137px;
+    --offset-y: -67px;
+    --margin-bottom: -12px;
+  }
+
+  [data-item-id="komod"] {
+    --offset-x: -170px;
+    --offset-y: -15px;
+  }
+  [data-item-id="tsvetok"] {
+    --offset-x: -192px;
+    --offset-y: -37px;
+  }
+  [data-item-id="prihozhaya"] {
+    --offset-x: -196px;
+    --offset-y: -24px;
+  }
+  [data-item-id="zerkalo"] {
+    --offset-x: -420px;
+    --offset-y: -104px;
+  }
+  [data-item-id="kartina-prihozhaya"] {
+    --offset-x: -259px;
+    --offset-y: -104px;
+  }
+
+  [data-layout="shelf-container"] {
+    margin-bottom: calc(-93px * var(--pricing-scale));
+    transform: translate(-11px, -22px);
+  }
+
+  .shelf-car-img {
+    bottom: 96px;
+    transform: translateX(-85px);
+  }
+
+  .cat-container {
+    transform: translateX(-329px) translateY(-37px);
+    width: 74px;
+    height: 74px;
+  }
+
+  .kitchen-annotation-text {
+    transform: translateX(148px) translateY(30px);
+  }
+
+  .kitchen-annotation-text span {
+    font-size: clamp(20px, 2.5vw, 37px);
+  }
+
+  .kitchen-annotation-arrow {
+    transform: translateX(241px) translateY(37px) rotate(10deg);
+  }
+
+  .kitchen-annotation-arrow img {
+    width: clamp(30px, 5.2vw, 45px);
+    height: clamp(30px, 5.2vw, 45px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .pricing-gallery-section {
+    --pricing-scale: 0.52;
+    --blueprint-height: 48%;
+  }
+
+  .pricing-blueprint-bg {
+    background-position: left 15px top;
+  }
+
+  .pricing-roll__texture {
+    left: 15px;
+  }
+
+  .pricing-roll__shadow {
+    left: 48px;
+  }
+
+  .pricing-roll__edge {
+    left: 60px;
+    width: 29px;
+  }
+
+  .pricing-heading {
+    transform: translateY(-100px);
+  }
+
+  .pricing-grid {
+    transform: translateY(-70px);
+  }
+
+  .pricing-column:nth-child(1) .pricing-room-title {
+    transform: translate(45px, -30px);
+  }
+  .pricing-column:nth-child(2) .pricing-room-title {
+    transform: translate(-58px, -30px);
+  }
+  .pricing-column:nth-child(3) .pricing-room-title {
+    transform: translate(-210px, -30px);
+  }
+  .pricing-column:nth-child(4) .pricing-room-title {
+    transform: translate(102px, -52px);
+  }
+  .pricing-column:nth-child(5) .pricing-room-title {
+    transform: translate(165px, -52px);
+  }
+
+  [data-item-id="shkaf-spalnya"] {
+    --offset-x: 9px;
+    --offset-y: -27px;
+  }
+  [data-item-id="tumbochka-spalnya"] {
+    --offset-x: 7px;
+    --offset-y: -26px;
+  }
+  [data-item-id="krovat"] {
+    --offset-x: 24px;
+    --offset-y: -13px;
+  }
+
+  [data-item-id="tumbochka-detskaya"] {
+    --offset-y: -34px;
+    --offset-x: -60px;
+  }
+  [data-item-id="stol-detskaya"] {
+    --offset-y: -3px;
+    --offset-x: -54px;
+  }
+  [data-item-id="polka"] {
+    --offset-y: -39px;
+    --offset-x: -48px;
+  }
+  [data-item-id="penal"] {
+    --offset-y: -34px;
+    --offset-x: -51px;
+  }
+
+  [data-item-id="kreslo"] {
+    --offset-x: 189px;
+    --offset-y: -57px;
+    --margin-bottom: 18px;
+  }
+  [data-item-id="shkaf-gostinaya"] {
+    --offset-x: 150px;
+    --offset-y: -48px;
+    --margin-top: 21px;
+  }
+  [data-item-id="divan"] {
+    --offset-x: 165px;
+    --offset-y: -46px;
+  }
+  [data-item-id="chasy"] {
+    --offset-x: 165px;
+    --offset-y: -51px;
+    --margin-bottom: -10px;
+  }
+  [data-item-id="torsher-gostinaya"] {
+    --offset-x: 171px;
+    --offset-y: -66px;
+    --margin-bottom: 18px;
+  }
+  [data-item-id="gostinaya-tumba"] {
+    --offset-x: 180px;
+    --offset-y: -46px;
+  }
+
+  [data-item-id="kuhnya"] {
+    --offset-x: 99px;
+    --offset-y: -27px;
+  }
+  [data-item-id="holodilnik"] {
+    --offset-x: 78px;
+    --offset-y: -84px;
+  }
+  [data-item-id="stul-lev"] {
+    --offset-x: 120px;
+    --offset-y: -84px;
+  }
+  [data-item-id="stol-kuhnya"] {
+    --offset-x: 111px;
+    --offset-y: -61px;
+  }
+  [data-item-id="stul-prav"] {
+    --offset-x: 96px;
+    --offset-y: -84px;
+  }
+  [data-item-id="kartina-kuhnya"] {
+    --offset-x: 111px;
+    --offset-y: -54px;
+    --margin-bottom: -10px;
+  }
+
+  [data-item-id="komod"] {
+    --offset-x: -138px;
+    --offset-y: -12px;
+  }
+  [data-item-id="tsvetok"] {
+    --offset-x: -156px;
+    --offset-y: -30px;
+  }
+  [data-item-id="prihozhaya"] {
+    --offset-x: -159px;
+    --offset-y: -19px;
+  }
+  [data-item-id="zerkalo"] {
+    --offset-x: -340px;
+    --offset-y: -84px;
+  }
+  [data-item-id="kartina-prihozhaya"] {
+    --offset-x: -210px;
+    --offset-y: -84px;
+  }
+
+  [data-layout="shelf-container"] {
+    margin-bottom: calc(-75px * var(--pricing-scale));
+    transform: translate(-9px, -18px);
+  }
+
+  .shelf-car-img {
+    bottom: 78px;
+    transform: translateX(-69px);
+  }
+
+  .cat-container {
+    transform: translateX(-267px) translateY(-30px);
+    width: 60px;
+    height: 60px;
+  }
+
+  .kitchen-annotation-text {
+    transform: translateX(120px) translateY(24px);
+  }
+
+  .kitchen-annotation-text span {
+    font-size: clamp(18px, 2.2vw, 30px);
+  }
+
+  .kitchen-annotation-arrow {
+    transform: translateX(195px) translateY(30px) rotate(10deg);
+  }
+
+  .kitchen-annotation-arrow img {
+    width: clamp(24px, 4.8vw, 36px);
+    height: clamp(24px, 4.8vw, 36px);
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing-gallery-section {
+    --pricing-scale: clamp(0.4, calc(100vw / 900), 0.6);
+    --blueprint-height: 45%;
+    --pricing-title-size: clamp(24px, 8vw, 56px);
+  }
+
+  .pricing-blueprint-bg,
+  .pricing-roll {
+    display: none !important;
+  }
+
+  .pricing-roll__texture {
+    left: 10px;
+  }
+
+  .pricing-roll__shadow {
+    left: 32px;
+  }
+
+  .pricing-roll__edge {
+    left: 40px;
+    width: 19px;
+  }
+
+  .pricing-main-title {
+    font-size: var(--pricing-title-size);
+  }
+  .pricing-heading {
+    transform: translateY(-80px);
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    transform: translateY(0) translateX(0);
+    gap: 24px;
+  }
+  .pricing-row-2 {
+    grid-template-columns: 1fr;
+    transform: translateY(-60px);
+    gap: clamp(20px, 4vw, 40px);
+  }
+  .pricing-grid > .pricing-column:nth-child(4),
+  .pricing-grid > .pricing-column:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .cat-container {
+    display: none !important;
+  }
+
+  .kitchen-annotation-text {
+    display: none;
+  }
+
+  .kitchen-annotation-text span {
+    font-size: clamp(14px, 4vw, 24px);
+  }
+
+  .kitchen-annotation-arrow {
+    transform: translateX(130px) translateY(20px) rotate(10deg);
+  }
+
+  .kitchen-annotation-arrow img {
+    width: clamp(19px, 6.4vw, 32px);
+    height: clamp(19px, 6.4vw, 32px);
+  }
+
+  .pricing-column:nth-child(1) .pricing-room-title,
+  .pricing-column:nth-child(2) .pricing-room-title,
+  .pricing-column:nth-child(3) .pricing-room-title,
+  .pricing-column:nth-child(4) .pricing-room-title,
+  .pricing-column:nth-child(5) .pricing-room-title {
+    transform: translate(0, 0);
+  }
+
+  .pricing-row {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  [data-layout="kitchen-chairs-row"] {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  [data-layout="shelf-container"] {
+    transform: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  .pricing-row-item {
+    flex-direction: column;
+    align-items: center;
+    transform: none;
+    width: calc(50% - 8px);
+  }
+
+  .pricing-gallery-section .pricing-icon,
+  .pricing-gallery-section [data-item-id] {
+    --offset-x: 0 !important;
+    --offset-y: 0 !important;
+    --margin-top: 0 !important;
+    --margin-bottom: 0 !important;
+    --margin-left: 0 !important;
+    --margin-right: 0 !important;
+    transition: none !important;
+  }
+
+  .pricing-gallery-section .pricing-icon {
+    transform: none !important;
+  }
+
+  .pricing-item-badge-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 199, 0, 0.4);
+    width: 100%;
+    max-width: 160px;
+    box-sizing: border-box;
+  }
+
+  .pricing-item-badge-mobile__title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .pricing-item-badge-mobile__price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffc700;
+    text-align: center;
+  }
+
+  [data-layout="kitchen-table-column"] {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 2048px) {
+  .pricing-gallery-section {
+    --pricing-scale: 1;
+  }
+}

@@ -1,0 +1,140 @@
+.custom-cursor-active,
+.custom-cursor-active *,
+.custom-cursor-active *::before,
+.custom-cursor-active *::after {
+  cursor: none !important;
+}
+
+.custom-cursor-active a,
+.custom-cursor-active button,
+.custom-cursor-active [role="button"],
+.custom-cursor-active [onclick],
+.custom-cursor-active input,
+.custom-cursor-active textarea,
+.custom-cursor-active select,
+.custom-cursor-active [contenteditable="true"],
+.custom-cursor-active img,
+.custom-cursor-active video,
+.custom-cursor-active svg {
+  cursor: none !important;
+}
+
+.custom-cursor-active .photo-card,
+.custom-cursor-active .photo-card *,
+.custom-cursor-active .page-square,
+.custom-cursor-active .page-square *,
+.custom-cursor-active .square-image-clickable,
+.custom-cursor-active .modal-close-button,
+.custom-cursor-active .clickable-card,
+.custom-cursor-active .clickable-card *,
+.custom-cursor-active .fullscreen-nav-area,
+.custom-cursor-active .fullscreen-close-btn,
+.custom-cursor-active .fullscreen-close-btn * {
+  cursor: none !important;
+}
+
+.custom-cursor-active .clickable-card,
+.custom-cursor-active .loading-city-button,
+.custom-cursor-active .region-option,
+.custom-cursor-active .phone-shake,
+.custom-cursor-active .interactive-folder,
+.custom-cursor-active .folder-item-content,
+.custom-cursor-active .carousel-control,
+.custom-cursor-active [data-interactive="true"],
+.custom-cursor-active [data-clickable="true"] {
+  cursor: none !important;
+}
+
+.custom-cursor-active .resize-handle,
+.custom-cursor-active .resize-handle-vertical {
+  cursor: none !important;
+}
+
+.custom-cursor-active [disabled],
+.custom-cursor-active .disabled,
+.custom-cursor-active [aria-disabled="true"] {
+  cursor: none !important;
+}
+
+.custom-cursor-active [title],
+.custom-cursor-active .help-cursor {
+  cursor: none !important;
+}
+
+.custom-cursor-active [draggable="true"],
+.custom-cursor-active .draggable {
+  cursor: none !important;
+}
+
+.custom-cursor-active .contract-form input,
+.custom-cursor-active .contract-form textarea {
+  cursor: none !important;
+}
+
+.custom-cursor-active .photo-card,
+.custom-cursor-active .photo-card img,
+.custom-cursor-active .page-square,
+.custom-cursor-active .square-image,
+.custom-cursor-active .square-image-clickable,
+.custom-cursor-active .hit-zone,
+.custom-cursor-active .hit-right,
+.custom-cursor-active .modal-close-button,
+.custom-cursor-active .modal-nav-arrow,
+.custom-cursor-active .carousel-arrow-prev,
+.custom-cursor-active .carousel-arrow-next,
+.custom-cursor-active .modal-clickable-area,
+.custom-cursor-active .flip-gallery-close-btn {
+  cursor: none !important;
+}
+
+.custom-cursor-active video,
+.custom-cursor-active .ipad-video,
+.custom-cursor-active .ipad-screen {
+  cursor: none !important;
+}
+
+.custom-cursor-active video:fullscreen,
+.custom-cursor-active *:fullscreen video,
+.custom-cursor-active *:fullscreen .ipad-video,
+.custom-cursor-active *:fullscreen .ipad-screen,
+.custom-cursor-active :fullscreen,
+.custom-cursor-active :fullscreen * {
+  cursor: none !important;
+}
+
+.custom-cursor-active .pricing-icon,
+.custom-cursor-active .clickable-icon {
+  cursor: none !important;
+}
+
+.custom-cursor-active .cursor-grab,
+.custom-cursor-active .cursor-grabbing,
+.custom-cursor-active .cursor-pointer,
+.custom-cursor-active .cursor-not-allowed {
+  cursor: none !important;
+}
+
+.custom-cursor-active .video-hero,
+.custom-cursor-active .video-hero *,
+.custom-cursor-active .ipad-video,
+.custom-cursor-active .ipad-screen,
+.custom-cursor-active .animated-discount-button {
+  cursor: none !important;
+}
+
+.custom-cursor-active .cursor-pointer,
+.custom-cursor-active .cursor-grab,
+.custom-cursor-active .cursor-grabbing,
+.custom-cursor-active .cursor-not-allowed,
+.custom-cursor-active .cursor-zoom-in {
+  cursor: none !important;
+}
+
+.custom-cursor-active .clickable-icon,
+.custom-cursor-active .pricing-icon {
+  cursor: none !important;
+}
+
+.custom-cursor-active .group {
+  cursor: none !important;
+}
