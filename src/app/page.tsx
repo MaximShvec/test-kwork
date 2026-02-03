@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+
 import { AdaptiveHero } from "@/components/sections/AdaptiveHero";
 import type { PortfolioItem } from "@/types";
 import { animation2Frames } from "@/lib/animation2Frames";
