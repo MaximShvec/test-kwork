@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState, type CSSProperties } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import { asset } from "@/lib/basePath";
 
 type PageItem = {
   title: string;
@@ -15,45 +16,45 @@ type PageItem = {
 const pages: PageItem[] = [
   {
     title: "Обложка",
-    leftUrl: "/images/textures/обложка.png",
-    rightUrl: "/images/textures/обложка.png",
+    leftUrl: asset("/images/textures/обложка.png"),
+    rightUrl: asset("/images/textures/обложка.png"),
     width: 1600,
     height: 850,
   },
   {
     title: "Group 2",
-    leftUrl: "/images/textures/Group 2.png",
-    rightUrl: "/images/textures/Group 2.png",
+    leftUrl: asset("/images/textures/Group 2.png"),
+    rightUrl: asset("/images/textures/Group 2.png"),
   },
   {
     title: "Group 3",
-    leftUrl: "/images/textures/Group 3.png",
-    rightUrl: "/images/textures/Group 3.png",
+    leftUrl: asset("/images/textures/Group 3.png"),
+    rightUrl: asset("/images/textures/Group 3.png"),
   },
   {
     title: "Group 4",
-    leftUrl: "/images/textures/Group 4.png",
-    rightUrl: "/images/textures/Group 4.png",
+    leftUrl: asset("/images/textures/Group 4.png"),
+    rightUrl: asset("/images/textures/Group 4.png"),
   },
   {
     title: "Group 5",
-    leftUrl: "/images/textures/Group 5.png",
-    rightUrl: "/images/textures/Group 5.png",
+    leftUrl: asset("/images/textures/Group 5.png"),
+    rightUrl: asset("/images/textures/Group 5.png"),
   },
   {
     title: "Group 6",
-    leftUrl: "/images/textures/Group 6.png",
-    rightUrl: "/images/textures/Group 6.png",
+    leftUrl: asset("/images/textures/Group 6.png"),
+    rightUrl: asset("/images/textures/Group 6.png"),
   },
   {
     title: "Group 7",
-    leftUrl: "/images/textures/Group 7.png",
-    rightUrl: "/images/textures/Group 7.png",
+    leftUrl: asset("/images/textures/Group 7.png"),
+    rightUrl: asset("/images/textures/Group 7.png"),
   },
   {
     title: "Group 8",
-    leftUrl: "/images/textures/Group 8.png",
-    rightUrl: "/images/textures/Group 8.png",
+    leftUrl: asset("/images/textures/Group 8.png"),
+    rightUrl: asset("/images/textures/Group 8.png"),
   },
 ];
 
@@ -146,9 +147,9 @@ function FlipGalleryComponent() {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
   const cardImages = [
-    { src: "/images/textures/card-left.png", label: "Карточка 1" },
-    { src: "/images/textures/card-middle.png", label: "Карточка 2" },
-    { src: "/images/textures/card-right.png", label: "Карточка 3" },
+    { src: asset("/images/textures/card-left.png"), label: "Карточка 1" },
+    { src: asset("/images/textures/card-middle.png"), label: "Карточка 2" },
+    { src: asset("/images/textures/card-right.png"), label: "Карточка 3" },
   ];
 
   const totalSpreads = pages.length - 1;
@@ -1006,7 +1007,7 @@ function FlipGalleryComponent() {
           }}
         >
           <img
-            src="/images/textures/card-left.png"
+            src={asset("/images/textures/card-left.png")}
             alt="фотка 1"
             className="card-image"
             draggable={false}
@@ -1058,7 +1059,7 @@ function FlipGalleryComponent() {
           }}
         >
           <img
-            src="/images/textures/card-middle.png"
+            src={asset("/images/textures/card-middle.png")}
             alt="фотка 2"
             className="card-image"
             draggable={false}
@@ -1110,7 +1111,7 @@ function FlipGalleryComponent() {
           }}
         >
           <img
-            src="/images/textures/card-right.png"
+            src={asset("/images/textures/card-right.png")}
             alt="фотка 3"
             className="card-image"
             draggable={false}
@@ -1259,7 +1260,9 @@ function FlipGalleryComponent() {
                   contourFlash ? " contour-flash" : ""
                 }${isClosing ? " contour-flash" : ""}`}
                 style={{
-                  backgroundImage: "url('/images/textures/Книга-2-контур.svg')",
+                  backgroundImage: `url('${asset(
+                    "/images/textures/Книга-2-контур.svg"
+                  )}')`,
                   backgroundSize: "contain",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -1275,8 +1278,9 @@ function FlipGalleryComponent() {
                     className="book-contour-glow"
                     aria-hidden="true"
                     style={{
-                      backgroundImage:
-                        "url('/images/textures/Книга-2-контур.svg')",
+                      backgroundImage: `url('${asset(
+                        "/images/textures/Книга-2-контур.svg"
+                      )}')`,
                       backgroundSize: "contain",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
@@ -1323,7 +1327,7 @@ function FlipGalleryComponent() {
                 }}
               >
                 <img
-                  src="/fotos/1.jpg"
+                  src={asset("/fotos/1.jpg")}
                   alt="Фото 1"
                   className="square-image square-image-clickable"
                   onClick={() => openPhotoFullscreen(0)}
@@ -1373,7 +1377,7 @@ function FlipGalleryComponent() {
                 }}
               >
                 <img
-                  src="/fotos/2.jpg"
+                  src={asset("/fotos/2.jpg")}
                   alt="Фото 2"
                   className="square-image square-image-clickable"
                   onClick={() => openPhotoFullscreen(1)}
@@ -1428,7 +1432,7 @@ function FlipGalleryComponent() {
                 }}
               >
                 <img
-                  src="/fotos/3.jpg"
+                  src={asset("/fotos/3.jpg")}
                   alt="Фото 3"
                   className="square-image square-image-clickable"
                   onClick={() => openPhotoFullscreen(2)}
@@ -1478,7 +1482,7 @@ function FlipGalleryComponent() {
                 }}
               >
                 <img
-                  src="/fotos/4.jpg"
+                  src={asset("/fotos/4.jpg")}
                   alt="Фото 4"
                   className="square-image square-image-clickable"
                   onClick={() => openPhotoFullscreen(3)}

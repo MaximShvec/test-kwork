@@ -13,6 +13,7 @@ import { TitleAnimation } from "@/components/ui/TitleAnimation";
 import { SmoothFrameAnimation } from "@/components/ui/smooth-frame-animation";
 import { animation7Frames } from "@/lib/animation7Frames";
 import { useResponsive } from "@/contexts/ResponsiveContext";
+import { asset } from "@/lib/basePath";
 import "@/styles/interactive-price-gallery.css";
 
 interface InteractivePriceGalleryProps {
@@ -689,7 +690,7 @@ const AllIconsGallery: React.FC<{
                 <div className="shelf-car-container">
                   <div className="shelf-car-wrapper">
                     <img
-                      src="/app/машинка.png"
+                      src={asset("/app/машинка.png")}
                       alt="Машинка"
                       className="shelf-car-img"
                     />
@@ -844,7 +845,7 @@ const AllIconsGallery: React.FC<{
                   }}
                 >
                   <Image
-                    src="/images/icons/arrow.png"
+                    src={asset("/images/icons/arrow.png")}
                     alt="arrow"
                     width={150}
                     height={150}

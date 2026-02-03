@@ -6,6 +6,7 @@ import { Phone, Mail, Instagram, Send, MessageCircle } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { useResponsive } from "@/contexts/ResponsiveContext";
 import ScaleWrapper from "./scale-wrapper";
+import { asset } from "@/lib/basePath";
 
 interface CosmicNebulaMastercardProps {
   cardholderName?: string;
@@ -88,7 +89,7 @@ const CosmicNebulaMastercard: React.FC<CosmicNebulaMastercardProps> = ({
       const leftOffset = left + (Math.random() * 14 - 7);
       const rotate = Math.random() * 360;
       return {
-        src: `/images/icons/${i + 1}.png`,
+        src: asset(`/images/icons/${i + 1}.png`),
         size,
         top: topOffset,
         left: leftOffset,
@@ -449,7 +450,7 @@ const CosmicNebulaMastercard: React.FC<CosmicNebulaMastercardProps> = ({
             }}
           >
             <img
-              src="/images/logo.png"
+              src={asset("/images/logo.png")}
               alt="Логотип"
               style={{
                 maxWidth: "70%",

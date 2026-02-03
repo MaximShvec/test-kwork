@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useIsMobile } from "@/contexts/ResponsiveContext";
+import { asset } from "@/lib/basePath";
 
 const CustomCursor: React.FC = () => {
   const isMobile = useIsMobile();
@@ -282,7 +283,7 @@ const CustomCursor: React.FC = () => {
     width: "64px",
     height: "64px",
     backgroundImage: `url(${
-      cursorState.isHoveringInteractive ? "/images/3.cur" : "/images/2.cur"
+      cursorState.isHoveringInteractive ? asset("/images/3.cur") : asset("/images/2.cur")
     })`,
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",

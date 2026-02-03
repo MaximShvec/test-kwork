@@ -1,4 +1,6 @@
-export const animation2Frames: string[] = [
+import { asset } from "./basePath";
+
+const RAW = [
   "/animation2/IMG_6435.webp",
   "/animation2/IMG_6436.webp",
   "/animation2/IMG_6437.webp",
@@ -91,4 +93,6 @@ export const animation2Frames: string[] = [
   "/animation2/IMG_6524.webp",
   "/animation2/IMG_6525.webp",
   "/animation2/IMG_6526.webp",
-]; 
+];
+
+export const animation2Frames: string[] = RAW.map(asset);

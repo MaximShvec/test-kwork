@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { asset } from "@/lib/basePath";
 
 interface CartoonContractProps {
   lastName: string;
@@ -95,7 +96,7 @@ export const CartoonContract: React.FC<CartoonContractProps> = ({
         marginRight: isMobile ? 0 : 300,
         background: isMobile
           ? "#fff"
-          : `url('/images/textures/6-6.PNG') top center/contain no-repeat`,
+          : `url('${asset("/images/textures/6-6.PNG")}') top center/contain no-repeat`,
         borderRadius: 16,
         overflow: isMobile ? "hidden" : "visible",
         willChange: isMobile ? undefined : "transform",
@@ -121,13 +122,13 @@ export const CartoonContract: React.FC<CartoonContractProps> = ({
       <style>{`
         @font-face {
           font-family: 'Furore';
-          src: url('/fonts/Furore.otf') format('opentype');
+          src: url('${asset("/fonts/Furore.otf")}') format('opentype');
           font-weight: normal;
           font-style: normal;
         }
         @font-face {
           font-family: 'Slavic-Regular';
-          src: url('/fonts/Slavic-Regular.ttf') format('truetype');
+          src: url('${asset("/fonts/Slavic-Regular.ttf")}') format('truetype');
           font-weight: normal;
           font-style: normal;
         }

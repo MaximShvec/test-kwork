@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { asset } from "@/lib/basePath"
 
 interface Feature {
   step: string
@@ -47,7 +48,7 @@ export function FeatureSteps({
     <div
       className={cn("p-8 md:p-12 border-2 border-yellow-400", className)}
       style={{
-        backgroundImage: "url('/images/textures/wood-grey.jpg')",
+        backgroundImage: `url('${asset("/images/textures/wood-grey.jpg")}')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundBlendMode: 'multiply',

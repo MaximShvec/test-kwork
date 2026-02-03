@@ -12,6 +12,7 @@ import { useAnimation } from "@/contexts/AnimationContext";
 import RegionSelectionModal from "@/components/ui/RegionSelectionModal";
 import DesktopNavigation from "@/components/navigation/DesktopNavigation";
 import type { DeviceType } from "@/lib/constants/breakpoints";
+import { asset } from "@/lib/basePath";
 import styles from "./AdaptiveHeader.module.css";
 
 interface AdaptiveHeaderProps {
@@ -211,7 +212,7 @@ const AdaptiveHeaderComponent: React.FC<AdaptiveHeaderProps> = ({
               >
                 <div className={cn("relative", styles["mobile-logo-enhanced"])}>
                   <Image
-                    src="/images/logo.svg"
+                    src={asset("/images/logo.svg")}
                     alt="SHELF Logo"
                     width={45}
                     height={45}
@@ -457,7 +458,7 @@ const AdaptiveHeaderComponent: React.FC<AdaptiveHeaderProps> = ({
             onClick={handleScrollToTop}
           >
             <Image
-              src="/images/logo.svg"
+              src={asset("/images/logo.svg")}
               alt="SHELF Сборка Мебели Logo"
               width={60}
               height={60}
@@ -523,7 +524,7 @@ const AdaptiveHeaderComponent: React.FC<AdaptiveHeaderProps> = ({
                   {activeRegion.mobileDisplay || activeRegion.phoneDisplay}
                 </span>
                 <Image
-                  src="/images/icons/phone.svg"
+                  src={asset("/images/icons/phone.svg")}
                   alt="Телефон"
                   width={42}
                   height={42}

@@ -6,6 +6,7 @@ import SpritePlayer from "@/components/ui/SpritePlayer";
 import FlipGallery from "@/components/sections/FlipGallery";
 import { MobileFlipGallery } from "@/components/ui/MobileFlipGallery";
 import { useResponsive } from "@/contexts/ResponsiveContext";
+import { asset } from "@/lib/basePath";
 
 const AboutSectionComponent = () => {
   const { isMobile } = useResponsive();
@@ -144,7 +145,7 @@ const AboutSectionComponent = () => {
         >
           {inView && (
             <SpritePlayer
-              metaUrl="/animation6/meta.json"
+              metaUrl={asset("/animation6/meta.json")}
               width={animationSize.width}
               height={animationSize.height}
               holdFirstMs={0}

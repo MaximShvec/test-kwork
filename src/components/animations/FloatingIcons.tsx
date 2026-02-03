@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { asset } from '@/lib/basePath';
 
 const ICON_SIZE = 80;               // Icon size in px
 const ICON_SPEED = 2;                // Base icon speed (удвоено)
@@ -217,7 +218,7 @@ export const FloatingIcons = () => {
             '/images/icons/7.png', '/images/icons/8.png', '/images/icons/9.png',
             '/images/icons/10.png', '/images/icons/11.png', '/images/icons/12.png',
             '/images/icons/13.png'
-        ];
+        ].map(asset);
 
         iconPaths.forEach(path => {
             const img = new Image();

@@ -12,6 +12,7 @@ import {
 import { Globe, Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useResponsive } from "@/contexts/ResponsiveContext";
+import { asset } from "@/lib/basePath";
 
 const TelegramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -44,7 +45,7 @@ interface LogoData {
 
 const logos: LogoData[] = [
   {
-    src: "/images/logo/logo1.png",
+    src: asset("/images/logo/logo1.png"),
     alt: "BestMebel",
     width: 994,
     height: 200,
@@ -53,14 +54,14 @@ const logos: LogoData[] = [
     telegramUrl: "https://t.me/bestmebelshop",
   },
   {
-    src: "/images/logo/logo2.png",
+    src: asset("/images/logo/logo2.png"),
     alt: "Volhov",
     width: 975,
     height: 200,
     websiteUrl: "https://volhovamebel.ru/",
   },
   {
-    src: "/images/logo/logo3.png",
+    src: asset("/images/logo/logo3.png"),
     alt: "Divan",
     width: 924,
     height: 200,
@@ -69,35 +70,35 @@ const logos: LogoData[] = [
     telegramUrl: "https://t.me/officialdivanru",
   },
   {
-    src: "/images/logo/logo17.png",
+    src: asset("/images/logo/logo17.png"),
     alt: "hoff",
     width: 404,
     height: 200,
     websiteUrl: "https://hoff.ru",
   },
   {
-    src: "/images/logo/logo5.png",
+    src: asset("/images/logo/logo5.png"),
     alt: "lazurit",
     width: 1349,
     height: 200,
     websiteUrl: "https://lazurit.com/",
   },
   {
-    src: "/images/logo/logo6.png",
+    src: asset("/images/logo/logo6.png"),
     alt: "lemanapro",
     width: 697,
     height: 200,
     websiteUrl: "https://lemanapro.ru/",
   },
   {
-    src: "/images/logo/logo7.png",
+    src: asset("/images/logo/logo7.png"),
     alt: "ld",
     width: 746,
     height: 200,
     websiteUrl: "https://lubidom.ru/",
   },
   {
-    src: "/images/logo/logo8.png",
+    src: asset("/images/logo/logo8.png"),
     alt: "maxidom",
     width: 586,
     height: 200,
@@ -105,7 +106,7 @@ const logos: LogoData[] = [
     instagramUrl: "https://t.me/maxidom",
   },
   {
-    src: "/images/logo/logo9.png",
+    src: asset("/images/logo/logo9.png"),
     alt: "mnogomebeli",
     width: 398,
     height: 200,
@@ -113,14 +114,14 @@ const logos: LogoData[] = [
     instagramUrl: "https://t.me/mnogomebeliofficial",
   },
   {
-    src: "/images/logo/logo10.png",
+    src: asset("/images/logo/logo10.png"),
     alt: "3+2",
     width: 699,
     height: 200,
     websiteUrl: "https://mf78.ru",
   },
   {
-    src: "/images/logo/logo11.png",
+    src: asset("/images/logo/logo11.png"),
     alt: "nonton",
     width: 1248,
     height: 200,
@@ -129,35 +130,35 @@ const logos: LogoData[] = [
     telegramUrl: "https://t.me/nonton_mebel",
   },
   {
-    src: "/images/logo/logo12.png",
+    src: asset("/images/logo/logo12.png"),
     alt: "pm",
     width: 1424,
     height: 200,
     websiteUrl: "https://spb.pm.ru",
   },
   {
-    src: "/images/logo/logo13.png",
+    src: asset("/images/logo/logo13.png"),
     alt: "robust",
     width: 1385,
     height: 200,
     websiteUrl: "https://vk.com/robust_spb",
   },
   {
-    src: "/images/logo/logo14.png",
+    src: asset("/images/logo/logo14.png"),
     alt: "stolplit",
     width: 1369,
     height: 200,
     websiteUrl: "https://spb.stolplit.ru/",
   },
   {
-    src: "/images/logo/logo15.png",
+    src: asset("/images/logo/logo15.png"),
     alt: "brw",
     width: 1051,
     height: 200,
     websiteUrl: "https://brw.ru/",
   },
   {
-    src: "/images/logo/logo16.png",
+    src: asset("/images/logo/logo16.png"),
     alt: "maria",
     width: 681,
     height: 200,
@@ -165,21 +166,21 @@ const logos: LogoData[] = [
     telegramUrl: "https://t.me/mf_marya",
   },
   {
-    src: "/images/logo/logo4.png",
+    src: asset("/images/logo/logo4.png"),
     alt: "dsv",
     width: 580,
     height: 200,
     websiteUrl: "https://dsv-mebel.ru/",
   },
   {
-    src: "/images/logo/logo18.png",
+    src: asset("/images/logo/logo18.png"),
     alt: "shatura",
     width: 905,
     height: 200,
     websiteUrl: "https://www.shatura.com/",
   },
   {
-    src: "/images/logo/logo19.png",
+    src: asset("/images/logo/logo19.png"),
     alt: "mrdors",
     width: 486,
     height: 200,
@@ -187,7 +188,7 @@ const logos: LogoData[] = [
     telegramUrl: "https://t.me/mrdoors_russia",
   },
   {
-    src: "/images/logo/logo20.png",
+    src: asset("/images/logo/logo20.png"),
     alt: "olisys",
     width: 512,
     height: 200,
@@ -315,7 +316,7 @@ export function LogoCarousel({ sectionId, active = false }: LogoCarouselProps) {
 
   useEffect(() => {
     const img = document.createElement("img");
-    img.src = "/images/partners/IMG_6107.jpg";
+    img.src = asset("/images/partners/IMG_6107.jpg");
     img.onload = () => {
       setTextureWidth(img.width);
     };
@@ -482,25 +483,25 @@ export function LogoCarousel({ sectionId, active = false }: LogoCarouselProps) {
           style={{ left: "-50%", width: "300%" }}
         >
           <img
-            src="/images/partners/IMG_6107.jpg"
+            src={asset("/images/partners/IMG_6107.jpg")}
             alt=""
             className="h-full w-auto object-cover"
             style={{ objectPosition: "bottom" }}
           />
           <img
-            src="/images/partners/IMG_6107.jpg"
+            src={asset("/images/partners/IMG_6107.jpg")}
             alt=""
             className="h-full w-auto object-cover"
             style={{ objectPosition: "bottom" }}
           />
           <img
-            src="/images/partners/IMG_6107.jpg"
+            src={asset("/images/partners/IMG_6107.jpg")}
             alt=""
             className="h-full w-auto object-cover"
             style={{ objectPosition: "bottom" }}
           />
           <img
-            src="/images/partners/IMG_6107.jpg"
+            src={asset("/images/partners/IMG_6107.jpg")}
             alt=""
             className="h-full w-auto object-cover"
             style={{ objectPosition: "bottom" }}

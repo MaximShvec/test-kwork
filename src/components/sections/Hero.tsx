@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { FlippableCreditCard } from '@/components/ui/credit-debit-card';
 import { FloatingVolumeButton } from '@/components/ui/floating-volume-button';
 import { useResponsive } from '@/contexts/ResponsiveContext';
+import { asset } from '@/lib/basePath';
 
 export const FrameAnimation: React.FC = () => {
   return <div className="frame-animation-container" aria-hidden="true" />;
@@ -811,7 +812,7 @@ export const Hero: React.FC<{ startHeroAnimations?: boolean }> = ({ startHeroAni
               {!isFullscreen && (
                 <>
                   <Image
-                    src="/images/textures/ipad.PNG"
+                    src={asset("/images/textures/ipad.PNG")}
                     alt="iPad"
                     className="ipad-frame"
                     width={1200}
@@ -820,7 +821,7 @@ export const Hero: React.FC<{ startHeroAnimations?: boolean }> = ({ startHeroAni
                     style={{ pointerEvents: 'none', display: 'block', width: '100%', height: '100%' }}
                   />
                   <Image
-                    src="/images/textures/konturipad.svg"
+                    src={asset("/images/textures/konturipad.svg")}
                     alt="Контур iPad"
                     className="ipad-contour"
                     width={1200}
@@ -974,25 +975,25 @@ export const Hero: React.FC<{ startHeroAnimations?: boolean }> = ({ startHeroAni
                   <motion.ul className="text-left mb-8 space-y-4 right-side-features" variants={hoverOscillate(12)} whileHover="hover" style={{ x: smoothListX, y: smoothListY, rotateX: smoothListTiltX, rotateY: smoothListTiltY, transformStyle: 'preserve-3d' }}>
                     <li className="flex items-center gap-4 text-white font-furore text-2xl md:text-3xl">
                       <span className="icon-container">
-                        <Image src="/images/icons/guarantee.png" alt="Гарантия" className={`icon-shield${activeBounceIndex === 0 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
+                        <Image src={asset("/images/icons/guarantee.png")} alt="Гарантия" className={`icon-shield${activeBounceIndex === 0 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
                       </span>
                       ГАРАНТИЯ КАЧЕСТВА НА ВСЕ ВИДЫ РАБОТ
                     </li>
                     <li className="flex items-center gap-4 text-white font-furore text-2xl md:text-3xl">
                       <span className="icon-container">
-                        <Image src="/images/icons/alarm-clock.png" alt="Пунктуальность" className={`icon-alarm${activeBounceIndex === 1 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
+                        <Image src={asset("/images/icons/alarm-clock.png")} alt="Пунктуальность" className={`icon-alarm${activeBounceIndex === 1 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
                       </span>
                       ПУНКТУАЛЬНОСТЬ И АККУРАТНОСТЬ МАСТЕРОВ
                     </li>
                     <li className="flex items-center gap-4 text-white font-furore text-2xl md:text-3xl">
                       <span className="icon-container">
-                        <Image src="/images/icons/molotok.png" alt="Инструмент" className={`icon-hammer${activeBounceIndex === 2 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
+                        <Image src={asset("/images/icons/molotok.png")} alt="Инструмент" className={`icon-hammer${activeBounceIndex === 2 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
                       </span>
                       ИСПОЛЬЗОВАНИЕ ПРОФЕССИОНАЛЬНОГО ИНСТРУМЕНТА
                     </li>
                     <li className="flex items-center gap-4 text-white font-furore text-2xl md:text-3xl">
                       <span className="icon-container">
-                        <Image src="/images/icons/lupa.png" alt="Цены" className={`icon-ruble${activeBounceIndex === 3 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
+                        <Image src={asset("/images/icons/lupa.png")} alt="Цены" className={`icon-ruble${activeBounceIndex === 3 ? ' bounce-check' : ''}`} width={48} height={48} loading="lazy" />
                       </span>
                       КОНКУРЕНТНЫЕ И ПРОЗРАЧНЫЕ ЦЕНЫ
                     </li>

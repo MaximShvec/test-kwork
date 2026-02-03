@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { asset } from "@/lib/basePath";
 import { AdaptiveHeader } from "@/components/layout/AdaptiveHeader";
 import { Footer } from "@/components/layout/Footer";
 
@@ -203,7 +204,7 @@ function ClientLayoutContent({ children }: { children: React.ReactNode }) {
                 width: "100%",
                 height: isMobile ? "auto" : "50px",
                 minHeight: isMobile ? "65px" : undefined,
-                backgroundImage: "url(/images/textures/3-2.jpg)",
+                backgroundImage: `url(${asset("/images/textures/3-2.jpg")})`,
                 backgroundSize: "cover",
                 backgroundRepeat: "repeat-x",
                 backgroundPosition: "center top",

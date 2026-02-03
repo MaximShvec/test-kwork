@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react"; 
 import { cn } from "@/lib/utils";
+import { asset } from "@/lib/basePath";
 import React from "react"; 
 
 export type PricingTier = {
@@ -60,7 +61,7 @@ function CreativePricing({
                                     "group-hover:translate-y-[-4px]"
                                 )}
                                 style={{
-                                    backgroundImage: `url(/images/textures/wood-grey.jpg)`,
+                                    backgroundImage: `url(${asset("/images/textures/wood-grey.jpg")})`,
                                     backgroundSize: 'cover',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: `${bgX}% ${bgY}%`,

@@ -1,3 +1,4 @@
+import { asset } from "./basePath";
 
 export const animation7Frames = [
   '/animation7/1.webp',
@@ -19,4 +20,4 @@ export const animation7Frames = [
   '/animation7/3.webp',
   '/animation7/2.webp',
   '/animation7/1.webp',
-];
+].map(asset);

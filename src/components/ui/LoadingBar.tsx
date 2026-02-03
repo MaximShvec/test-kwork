@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRegion } from "@/contexts/RegionContext";
 import RegionSelectionModal from "./RegionSelectionModal";
+import { asset } from "@/lib/basePath";
 
 const frameImages = [
   "/loading/IMG_6085.webp",
@@ -16,7 +17,7 @@ const frameImages = [
   "/loading/IMG_6096.webp",
   "/loading/IMG_6097.webp",
   "/loading/IMG_6098.webp",
-];
+].map(asset);
 
 function easeInCubic(t: number): number {
   return t * t * t;
@@ -370,7 +371,7 @@ export default function LoadingBar() {
           top: mousePosition.y - 32,
           width: '64px',
           height: '64px',
-          backgroundImage: `url(${isHoveringButton ? '/images/3.cur' : '/images/2.cur'})`,
+          backgroundImage: `url(${isHoveringButton ? asset('/images/3.cur') : asset('/images/2.cur')})`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',

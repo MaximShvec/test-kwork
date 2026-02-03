@@ -7,6 +7,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { PrivacyPolicyContent } from "@/components/ui/PrivacyPolicyModal";
 import { useRegion } from "@/contexts/RegionContext";
 import { useResponsive } from "@/contexts/ResponsiveContext";
+import { asset } from "@/lib/basePath";
 
 const TelegramIcon = () => (
   <svg
@@ -63,12 +64,12 @@ const TABS = [
   {
     key: "terms",
     label: "Пользовательское соглашение",
-    image: "/images/textures/IMG_6309.PNG", // visual icon for the terms of service tab
+    image: asset("/images/textures/IMG_6309.PNG"), // visual icon for the terms of service tab
   },
   {
     key: "privacy",
     label: "Политика конфиденциальности",
-    image: "/images/textures/IMG_6308.PNG", // visual icon for the privacy policy tab
+    image: asset("/images/textures/IMG_6308.PNG"), // visual icon for the privacy policy tab
   },
 ];
 
@@ -92,8 +93,8 @@ export const Footer = () => {
   const [isReverseThrow, setIsReverseThrow] = useState(false); // Новое состояние для реверса
   const [hideStaticText, setHideStaticText] = useState(false);
   const TAB_OUTLINES: Record<string, string> = {
-    privacy: "/images/textures/soglas.svg",
-    terms: "/images/textures/politika.svg",
+    privacy: asset("/images/textures/soglas.svg"),
+    terms: asset("/images/textures/politika.svg"),
   };
 
   const folderContainerRef = useRef<HTMLDivElement>(null);
@@ -1281,7 +1282,7 @@ export const Footer = () => {
         }
         @font-face {
           font-family: "Slavic";
-          src: url("/fonts/Slavic-Regular.ttf") format("truetype");
+          src: url("${asset("/fonts/Slavic-Regular.ttf")}") format("truetype");
           font-weight: normal;
           font-style: normal;
           font-display: swap;
@@ -1358,7 +1359,7 @@ export const Footer = () => {
           border-top: 2px solid #ffc700;
           pointer-events: none;
           z-index: 90000;
-          background-image: url("/images/textures/3-2.jpg");
+          background-image: url("${asset("/images/textures/3-2.jpg")}");
           background-size: cover;
           background-repeat: repeat-x;
           background-position: center bottom;

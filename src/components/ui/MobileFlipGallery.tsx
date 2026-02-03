@@ -1,83 +1,84 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { asset } from "@/lib/basePath";
 
 const mobileGalleryData = [
   {
     id: 1,
-    title: 'Сборка кухонного гарнитура',
-    image: '/fotos/1.jpg',
-    category: 'Кухня'
+    title: "Сборка кухонного гарнитура",
+    image: asset("/fotos/1.jpg"),
+    category: "Кухня",
   },
   {
     id: 2,
-    title: 'Установка встроенного шкафа',
-    image: '/fotos/2.jpg',
-    category: 'Спальня'
+    title: "Установка встроенного шкафа",
+    image: asset("/fotos/2.jpg"),
+    category: "Спальня",
   },
   {
     id: 3,
-    title: 'Монтаж полок в детской',
-    image: '/fotos/3.jpg',
-    category: 'Детская'
+    title: "Монтаж полок в детской",
+    image: asset("/fotos/3.jpg"),
+    category: "Детская",
   },
   {
     id: 4,
-    title: 'Сборка офисной мебели',
-    image: '/fotos/4.jpg',
-    category: 'Офис'
+    title: "Сборка офисной мебели",
+    image: asset("/fotos/4.jpg"),
+    category: "Офис",
   },
   {
     id: 5,
-    title: 'Установка прихожей',
-    image: '/fotos/5.jpg',
-    category: 'Прихожая'
+    title: "Установка прихожей",
+    image: asset("/fotos/5.jpg"),
+    category: "Прихожая",
   },
   {
     id: 6,
-    title: 'Сборка спального гарнитура',
-    image: '/fotos/6.jpg',
-    category: 'Спальня'
+    title: "Сборка спального гарнитура",
+    image: asset("/fotos/6.jpg"),
+    category: "Спальня",
   },
   {
     id: 7,
-    title: 'Монтаж кухонных фасадов',
-    image: '/fotos/7.jpg',
-    category: 'Кухня'
+    title: "Монтаж кухонных фасадов",
+    image: asset("/fotos/7.jpg"),
+    category: "Кухня",
   },
   {
     id: 8,
-    title: 'Установка гардеробной системы',
-    image: '/fotos/8.jpg',
-    category: 'Гардероб'
+    title: "Установка гардеробной системы",
+    image: asset("/fotos/8.jpg"),
+    category: "Гардероб",
   },
   {
     id: 9,
-    title: 'Сборка детской мебели',
-    image: '/fotos/9.jpg',
-    category: 'Детская'
+    title: "Сборка детской мебели",
+    image: asset("/fotos/9.jpg"),
+    category: "Детская",
   },
   {
     id: 10,
-    title: 'Монтаж книжных полок',
-    image: '/fotos/10.jpg',
-    category: 'Гостиная'
+    title: "Монтаж книжных полок",
+    image: asset("/fotos/10.jpg"),
+    category: "Гостиная",
   },
   {
     id: 11,
-    title: 'Установка ТВ-тумбы',
-    image: '/fotos/11.jpg',
-    category: 'Гостиная'
+    title: "Установка ТВ-тумбы",
+    image: asset("/fotos/11.jpg"),
+    category: "Гостиная",
   },
   {
     id: 12,
-    title: 'Сборка обеденного стола',
-    image: '/fotos/12.jpg',
-    category: 'Кухня'
-  }
+    title: "Сборка обеденного стола",
+    image: asset("/fotos/12.jpg"),
+    category: "Кухня",
+  },
 ];
 
 export const MobileFlipGallery: React.FC = () => {
@@ -106,16 +107,16 @@ export const MobileFlipGallery: React.FC = () => {
 
   useEffect(() => {
     if (isFullscreen) {
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('photo-fullscreen-active');
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("photo-fullscreen-active");
     } else {
-      document.body.style.overflow = '';
-      document.body.classList.remove('photo-fullscreen-active');
+      document.body.style.overflow = "";
+      document.body.classList.remove("photo-fullscreen-active");
     }
 
     return () => {
-      document.body.style.overflow = '';
-      document.body.classList.remove('photo-fullscreen-active');
+      document.body.style.overflow = "";
+      document.body.classList.remove("photo-fullscreen-active");
     };
   }, [isFullscreen]);
 
@@ -124,7 +125,9 @@ export const MobileFlipGallery: React.FC = () => {
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + mobileGalleryData.length) % mobileGalleryData.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + mobileGalleryData.length) % mobileGalleryData.length
+    );
   };
 
   const openFullscreen = (index: number) => {
@@ -141,7 +144,9 @@ export const MobileFlipGallery: React.FC = () => {
   };
 
   const prevFullscreenPhoto = () => {
-    setFullscreenIndex((prev) => (prev - 1 + mobileGalleryData.length) % mobileGalleryData.length);
+    setFullscreenIndex(
+      (prev) => (prev - 1 + mobileGalleryData.length) % mobileGalleryData.length
+    );
   };
 
   useEffect(() => {
@@ -149,20 +154,20 @@ export const MobileFlipGallery: React.FC = () => {
       if (!isFullscreen) return;
 
       switch (e.key) {
-        case 'Escape':
+        case "Escape":
           closeFullscreen();
           break;
-        case 'ArrowLeft':
+        case "ArrowLeft":
           prevFullscreenPhoto();
           break;
-        case 'ArrowRight':
+        case "ArrowRight":
           nextFullscreenPhoto();
           break;
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isFullscreen]);
 
   const currentItem = mobileGalleryData[currentIndex];
@@ -175,7 +180,7 @@ export const MobileFlipGallery: React.FC = () => {
           className="text-center mb-8"
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-3xl md:text-4xl font-furore text-accent mb-4 uppercase">
             Наши Работы
@@ -189,10 +194,12 @@ export const MobileFlipGallery: React.FC = () => {
         <motion.div
           className="relative max-w-sm mx-auto mb-6"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+          animate={
+            isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+          }
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div 
+          <div
             className="relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer group"
             onClick={() => openFullscreen(currentIndex)}
           >
@@ -203,10 +210,10 @@ export const MobileFlipGallery: React.FC = () => {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 400px"
             />
-            
+
             {}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            
+
             {}
             <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
               <div className="text-xs text-accent font-semibold mb-1 uppercase">
@@ -219,8 +226,18 @@ export const MobileFlipGallery: React.FC = () => {
 
             {}
             <div className="absolute top-4 right-4 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              <svg
+                className="w-4 h-4 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                />
               </svg>
             </div>
           </div>
@@ -255,7 +272,7 @@ export const MobileFlipGallery: React.FC = () => {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentIndex ? 'bg-accent' : 'bg-gray-600'
+                index === currentIndex ? "bg-accent" : "bg-gray-600"
               }`}
               aria-label={`Перейти к фото ${index + 1}`}
             />
@@ -274,7 +291,7 @@ export const MobileFlipGallery: React.FC = () => {
               key={item.id}
               onClick={() => setCurrentIndex(index)}
               className={`flex-shrink-0 w-16 h-12 rounded overflow-hidden border-2 transition-colors ${
-                index === currentIndex ? 'border-accent' : 'border-transparent'
+                index === currentIndex ? "border-accent" : "border-transparent"
               }`}
             >
               <Image

@@ -9,6 +9,7 @@ import {
   useInView,
 } from "framer-motion";
 import Image from "next/image";
+import { asset } from "@/lib/basePath";
 import { useRegion } from "@/contexts/RegionContext";
 
 export const ContactInfoSection: React.FC<{ sectionId?: string }> = ({
@@ -226,7 +227,7 @@ export const ContactInfoSection: React.FC<{ sectionId?: string }> = ({
             }}
           >
             <Image
-              src="/animation_transparent_400.webp"
+              src={asset("/animation_transparent_400.webp")}
               alt="Анимация"
               width={400}
               height={400}
@@ -290,7 +291,7 @@ export const ContactInfoSection: React.FC<{ sectionId?: string }> = ({
             >
               <span className="icon-container">
                 <Image
-                  src="/images/icons/documents_icon_200.png"
+                  src={asset("/images/icons/documents_icon_200.png")}
                   alt="Заявка"
                   className={`icon-shield${
                     activeBounceBullet === 0 ? " bounce-check" : ""
@@ -316,7 +317,7 @@ export const ContactInfoSection: React.FC<{ sectionId?: string }> = ({
             >
               <span className="icon-container">
                 <Image
-                  src="/images/icons/phone_icon_200.png"
+                  src={asset("/images/icons/phone_icon_200.png")}
                   alt="Телефон"
                   className={`icon-alarm${
                     activeBounceBullet === 1 ? " bounce-check" : ""
@@ -342,7 +343,7 @@ export const ContactInfoSection: React.FC<{ sectionId?: string }> = ({
             >
               <span className="icon-container">
                 <Image
-                  src="/images/icons/camera_icon_200.png"
+                  src={asset("/images/icons/camera_icon_200.png")}
                   alt="Мессенджеры"
                   className={`icon-hammer${
                     activeBounceBullet === 2 ? " bounce-check" : ""
@@ -368,7 +369,7 @@ export const ContactInfoSection: React.FC<{ sectionId?: string }> = ({
             >
               <span className="icon-container">
                 <Image
-                  src="/images/icons/at_icon_200.png"
+                  src={asset("/images/icons/at_icon_200.png")}
                   alt="Почта"
                   className={`icon-ruble${
                     activeBounceBullet === 3 ? " bounce-check" : ""

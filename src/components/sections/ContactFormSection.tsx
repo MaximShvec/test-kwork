@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/actions/contact";
 import { cn } from "@/lib/utils";
+import { asset } from "@/lib/basePath";
 import { useRegion } from "@/contexts/RegionContext";
 import { useResponsive } from "@/contexts/ResponsiveContext";
 import { CartoonContract } from "./CartoonContract";
@@ -67,7 +68,7 @@ interface ContactFormSectionProps {
 }
 
 const ANIMATION_FRAME_COUNT = 79; // Актуальное количество после удаления 2 кадров
-const ANIMATION_PATH = "/animation3/";
+const ANIMATION_PATH = asset("/animation3/");
 const ANIMATION_PREFIX = "IMG_";
 const ANIMATION_START = 6561;
 const ANIMATION_END = 6641;
@@ -663,7 +664,7 @@ export const ContactFormSection: FC<ContactFormSectionProps> = ({
               >
                 <span className="icon-container">
                   <Image
-                    src="/images/icons/draw.png"
+                    src={asset("/images/icons/draw.png")}
                     alt="Договор"
                     className={`icon-shield${
                       activeBounceBullet === 0 ? " bounce-check" : ""
@@ -699,7 +700,7 @@ export const ContactFormSection: FC<ContactFormSectionProps> = ({
               >
                 <span className="icon-container">
                   <Image
-                    src="/images/icons/customer.png"
+                    src={asset("/images/icons/customer.png")}
                     alt="Свяжемся"
                     className={`icon-alarm${
                       activeBounceBullet === 1 ? " bounce-check" : ""
@@ -735,7 +736,7 @@ export const ContactFormSection: FC<ContactFormSectionProps> = ({
               >
                 <span className="icon-container">
                   <Image
-                    src="/images/icons/organic.png"
+                    src={asset("/images/icons/organic.png")}
                     alt="Мастера"
                     className={`icon-hammer${
                       activeBounceBullet === 2 ? " bounce-check" : ""
@@ -771,7 +772,7 @@ export const ContactFormSection: FC<ContactFormSectionProps> = ({
               >
                 <span className="icon-container">
                   <Image
-                    src="/images/icons/kiss.png"
+                    src={asset("/images/icons/kiss.png")}
                     alt="Наслаждайтесь"
                     className={`icon-ruble${
                       activeBounceBullet === 3 ? " bounce-check" : ""
@@ -884,7 +885,7 @@ export const ContactFormSection: FC<ContactFormSectionProps> = ({
                   <style>{`
                 @font-face {
                   font-family: 'Slavic-Regular';
-                  src: url('/fonts/Slavic-Regular.ttf') format('truetype');
+                  src: url('${asset("/fonts/Slavic-Regular.ttf")}') format('truetype');
                   font-weight: normal;
                   font-style: normal;
                 }
@@ -1313,7 +1314,7 @@ export const ContactFormSection: FC<ContactFormSectionProps> = ({
                     </form>
                     {showStamp && (
                       <Image
-                        src="/images/accept.PNG"
+                        src={asset("/images/accept.PNG")}
                         alt="ПРИНЯТО В РАБОТУ"
                         width={200}
                         height={100}
